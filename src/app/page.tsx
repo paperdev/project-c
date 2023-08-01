@@ -1,17 +1,10 @@
-import ComponentIntro from './components/intro';
-import ComponentHistory from './components/history';
+import Template from './components/template';
 
 export default function Home() {
   return (
     <div>
-      <div>
-        <ComponentIntro>
-        </ComponentIntro>
-      </div>
-      <div>
-        <ComponentHistory>
-        </ComponentHistory>
-      </div>
+      <Template>
+      </Template>
     </div>
   )
 }

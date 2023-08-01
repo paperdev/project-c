@@ -4,7 +4,7 @@ import { dataHistory, iHistory } from '@/data/history';
 
 const History: React.FC<iHistory> = ({ title, contents }) => {
   return (
-    <section className="my-14 text-sm">
+    <section className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
       <h3 className="mb-6">{title}</h3>
       <div className="flex flex-col gap-6">
         {contents.map((content, index) => {

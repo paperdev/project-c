@@ -1,10 +1,8 @@
-export const dataIntro = {
+export const dataProfile = {
   name: 'Kevin',
   avatar: 'https://github.com/paperdev.png',
   jobTitle: 'Mobile game server developer',
-  website: 'https://github.com/paperdev',
-  about:
-    `I'm Kevin, a developer which has 9 years of experience in mobile game server development.`,
+  homepage: 'https://github.com/paperdev',
   contacts: [
     {
       label: 'Email',
