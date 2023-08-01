@@ -11,12 +11,20 @@ export const dataHistory: iHistory[] = [
     title: "Title 123456",
     contents: [
       {
-        summary: "summary 123456",
-        description: "description 123456.",
+        summary: "summary 1",
+        description: "description 1.",
       },
       {
-        summary: "summary 123456",
-        description: "description 123456.",
+        summary: "summary 2",
+        description: "description 2.",
+      },
+      {
+        summary: "summary 3",
+        description: "description 3.",
+      },
+      {
+        summary: "summary 4",
+        description: "description 4.",
       },
     ],
   },
@@ -24,12 +32,20 @@ export const dataHistory: iHistory[] = [
     title: "Title abcdef",
     contents: [
       {
-        summary: "summary abcdef",
-        description: "description abcdef.",
+        summary: "summary a",
+        description: "description a.",
       },
       {
-        summary: "summary abcdef",
-        description: "description abcdef.",
+        summary: "summary b",
+        description: "description b.",
+      },
+      {
+        summary: "summary c",
+        description: "description c.",
+      },
+      {
+        summary: "summary d",
+        description: "description d.",
       },
     ],
   },
