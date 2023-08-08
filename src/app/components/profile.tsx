@@ -2,7 +2,28 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { dataProfile } from '@/data/profile';
+
+let isToast = false;
+const delayTime = 2000;
+const copyText = async (text: string) => {
+  navigator.clipboard.writeText(text);
+  if (isToast) {
+    return;
+  }
+  const toastId = toast.success(
+    'Email is copied',
+    {
+      autoClose: delayTime,
+    }
+  );
+  isToast = true;
+  setTimeout(() => {
+    isToast = false;
+  }, delayTime)
+}
 
 export default function ComponentProfile({
   children,
@@ -20,10 +41,16 @@ export default function ComponentProfile({
           <p className="text-gray-500 font-medium">
             {dataProfile.jobTitle}
           </p>
+          <p>
+            <Link href={dataProfile.github} target="_blank" className="text-sm text-purple-600 font-semibold hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
+              {dataProfile.github}
+            </Link>
+          </p>
+          <button onClick={() => {copyText(dataProfile.email)}} title='click to copy'>
+            {dataProfile.email}
+          </button>
+          <ToastContainer/>
         </div>
-        <Link href={dataProfile.homepage} target="_blank" className="px-2 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
-          Homepage
-        </Link>
       </div>
     </div>
   )
