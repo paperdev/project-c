@@ -1,60 +1,30 @@
 export interface iHistory {
-  title: string;
+  companyName: string;
   contents: {
-    summary: string;
+    beginDate: string;
+    endDate: string;
     description: string;
   }[];
 };
 
 export const dataHistory: iHistory[] = [
   {
-    title: "Title 123456",
+    companyName: "Company a",
     contents: [
       {
-        summary: "summary 1",
-        description: "description 1.",
-      },
-      {
-        summary: "summary 2",
-        description: "description 2.",
-      },
-      {
-        summary: "summary 3",
-        description: "description 3.",
-      },
-      {
-        summary: "summary 4",
-        description: "description 4.",
+        beginDate: "2015-01",
+        endDate: "2020-12",
+        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae et doloribus est vero non, quidem rerum ipsa mollitia assumenda delectus quis dicta voluptatum accusantium totam officiis enim qui, repellendus alias. Dolore voluptas perspiciatis numquam consequuntur corporis reprehenderit, ipsam iusto blanditiis, molestiae rem aliquam vero culpa veritatis cumque non doloremque id ab odit. Omnis, rem ipsam qui nostrum recusandae voluptas optio!",
       },
     ],
   },
   {
-    title: "Title abcdef",
+    companyName: "Company b",
     contents: [
       {
-        summary: "summary a",
-        description: "description a.",
-      },
-      {
-        summary: "summary b",
-        description: "description b.",
-      },
-      {
-        summary: "summary c",
-        description: "description c.",
-      },
-      {
-        summary: "summary d",
-        description: "description d.",
-      },
-    ],
-  },
-  {
-    title: "Something else",
-    contents: [
-      {
-        summary: "something else summary",
-        description: "something else description",
+        beginDate: "2000-01",
+        endDate: "2014-12",
+        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae et doloribus est vero non, quidem rerum ipsa mollitia assumenda delectus quis dicta voluptatum accusantium totam officiis enim qui, repellendus alias. Dolore voluptas perspiciatis numquam consequuntur corporis reprehenderit, ipsam iusto blanditiis, molestiae rem aliquam vero culpa veritatis cumque non doloremque id ab odit. Omnis, rem ipsam qui nostrum recusandae voluptas optio!",
       },
     ],
   },
