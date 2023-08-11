@@ -1,4 +1,5 @@
 import ComponentProfile from './profile';
+import ComponentTag from './tag';
 import ComponentSummary from './summary';
 import ComponentHistory from './history';
 
@@ -12,6 +13,10 @@ export default function Template({
       <div>
         <ComponentProfile>
         </ComponentProfile>
+      </div>
+      <div>
+        <ComponentTag>
+        </ComponentTag>
       </div>
       <div>
         <ComponentSummary>
