@@ -1,8 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import Navbar from './navbar';
+import Providers from './providers'
 
 export const metadata: Metadata = {
   title: 'hello title',
@@ -15,8 +14,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html suppressHydrationWarning>
+      <body>
+        <div>
+          <Navbar>
+          </Navbar>
+        </div>
+        
+        <div>
+          <Providers>
+            {children}
+          </Providers>
+        </div>
+      </body>
     </html>
   )
 }
