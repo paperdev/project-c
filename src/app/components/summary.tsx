@@ -1,8 +1,14 @@
 'use client';
 
-import { dataSummary } from '@/data/summary';
+import { iSummary } from '@/data/summary';
 
-export default function ComponentSummary({children}: {children: React.ReactNode}) {
+export default function ComponentSummary({
+  children,
+  dataSummary
+}: {
+  children: React.ReactNode,
+  dataSummary: iSummary
+}) {
   return(
     <div className='py-8 px-8 max-w-md mx-auto rounded-xl shadow-md md:max-w-2xl space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6'>
       <div className='tracking-wide text-sm text-indigo-500 font-semibold'>

@@ -1,7 +1,7 @@
-import ComponentProfile from './profile';
-import ComponentTag from './tag';
-import ComponentSummary from './summary';
-import ComponentHistory from './history';
+import { DataProfile } from '@/data/profile';
+import { DataTags } from '@/data/tags';
+import { DataSummary } from '@/data/summary';
+import { DataHistory } from '@/data/history';
 
 export default function Template({
   children,
@@ -11,20 +11,20 @@ export default function Template({
   return (
     <div>
       <div>
-        <ComponentProfile>
-        </ComponentProfile>
+        <DataProfile>
+        </DataProfile>
       </div>
       <div>
-        <ComponentTag>
-        </ComponentTag>
+        <DataTags>
+        </DataTags>
       </div>
       <div>
-        <ComponentSummary>
-        </ComponentSummary>
+        <DataSummary>
+        </DataSummary>
       </div>
       <div>
-        <ComponentHistory>
-        </ComponentHistory>
+        <DataHistory>
+        </DataHistory>
       </div>
     </div>
   )

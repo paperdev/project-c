@@ -1,10 +1,9 @@
 'use client';
 
+import { iProfile } from '@/data/profile';
 import Image from 'next/image';
 import Link from 'next/link';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { dataProfile } from '@/data/profile';
 
 let isToast = false;
 const delayTime = 2000;
@@ -25,10 +24,12 @@ const copyText = async (text: string) => {
   }, delayTime)
 }
 
-export default function ComponentProfile({
+export default async function ComponentProfile({
   children,
+  dataProfile
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  dataProfile: iProfile
 }) {
   return (
     <div className='py-8 px-8 max-w-md mx-auto rounded-xl shadow-md md:max-w-2xl space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6'>
