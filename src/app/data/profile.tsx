@@ -24,12 +24,12 @@ async function DataProfile({
 }: {
   children: React.ReactNode,
 }) {
-  const resultJson = await Request('./profile.json');
+  const resultJson = await Request('profile.json');
   const jsonProfile: iProfile = resultJson as unknown as iProfile;
   
   return (
     <div>
-      <ComponentProfile children={children} dataProfile={jsonProfile}></ComponentProfile>
+      <ComponentProfile dataProfile={jsonProfile}><></></ComponentProfile>
     </div>
   )
 }

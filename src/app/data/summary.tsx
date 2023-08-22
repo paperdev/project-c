@@ -11,12 +11,12 @@ async function DataSummary({
 }: {
   children: React.ReactNode,
 }) {
-  const resultJson = await Request('./summary.json');
+  const resultJson = await Request('summary.json');
   const jsonSummary: iSummary = resultJson as unknown as iSummary;
 
   return (
     <div>
-      <ComponentSummary children={children} dataSummary={jsonSummary}></ComponentSummary>
+      <ComponentSummary dataSummary={jsonSummary}><></></ComponentSummary>
     </div>
   )
 }

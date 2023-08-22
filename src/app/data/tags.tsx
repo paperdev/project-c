@@ -7,12 +7,12 @@ async function DataTags({
 }: {
   children: React.ReactNode,
 }) {
-  const resultJson = await Request('./tags.json');
+  const resultJson = await Request('tags.json');
   const jsonTags: string[] = resultJson as unknown as string[];
 
   return (
     <div>
-      <ComponentTag children={children} dataTags={jsonTags}></ComponentTag>
+      <ComponentTag dataTags={jsonTags}><></></ComponentTag>
     </div>
   )
 }

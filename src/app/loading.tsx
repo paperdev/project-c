@@ -1,17 +1,20 @@
 export default function Loading() {
   return (
-    <div className="py-4 rounded shadow-md w-60 sm:w-80 animate-pulse dark:bg-gray-900 mx-auto ">
-      <div className="flex p-4 space-x-4 sm:px-8">
-        <div className="flex-shrink-0 w-16 h-16 rounded-full dark:bg-gray-700"></div>
-        <div className="flex-1 py-2 space-y-4">
-          <div className="w-full h-3 rounded dark:bg-gray-700"></div>
-          <div className="w-5/6 h-3 rounded dark:bg-gray-700"></div>
+    <div className="border shadow-md rounded-md p-4 max-w-sm w-full mx-auto">
+      <div className="animate-pulse flex space-x-4">
+        <div className="rounded-full bg-slate-200 h-10 w-10"></div>
+        <div className="flex-1 space-y-6 py-1">
+          <div className="h-2 bg-slate-200 rounded"></div>
+          <div className="space-y-3">
+            <div className="grid grid-cols-3 gap-4">
+              <div className="h-2 bg-slate-200 rounded col-span-2"></div>
+              <div className="h-2 bg-slate-200 rounded col-span-1"></div>
+            </div>
+            <div className="h-2 bg-slate-200 rounded"></div>
+            <div className="h-2 bg-slate-200 rounded"></div>
+            <div className="h-2 bg-slate-200 rounded"></div>
+          </div>
         </div>
-      </div>
-      <div className="p-4 space-y-4 sm:px-8">
-        <div className="w-full h-4 rounded dark:bg-gray-700"></div>
-        <div className="w-full h-4 rounded dark:bg-gray-700"></div>
-        <div className="w-3/4 h-4 rounded dark:bg-gray-700"></div>
       </div>
     </div>
   )

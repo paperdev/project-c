@@ -22,10 +22,10 @@ export default function RootLayout({
       <body>
           <Navbar>
           </Navbar>
-        
-        <Suspense fallback={<Loading></Loading>}>
-            {children}
-        </Suspense>
+          
+          <Suspense fallback={<Loading></Loading>}>
+              {children}
+          </Suspense>
       </body>
     </html>
   )

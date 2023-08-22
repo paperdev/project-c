@@ -16,12 +16,12 @@ async function DataHistory({
 }: {
   children: React.ReactNode,
 }) {
-  const resultJson = await Request('./history.json');
+  const resultJson = await Request('history.json');
   const jsonHistory: iHistory[] = resultJson as unknown as iHistory[];
 
   return (
     <div>
-      <ComponentHistory children={children} dataHistory={jsonHistory}></ComponentHistory>
+      <ComponentHistory dataHistory={jsonHistory}><></></ComponentHistory>
     </div>
   )
 }
