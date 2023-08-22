@@ -9,7 +9,7 @@ export default function Navbar({
   children: React.ReactNode
 }) {
   return (
-    <div className='paper-navbar bg-base-100'>
+    <div className='paper-navbar bg-base-100 sticky top-0 '>
 
       <div className='paper-navbar-start'>
         <div className='paper-dropdown'>
