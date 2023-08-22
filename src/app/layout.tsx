@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import Navbar from './navbar';
-import Loading from './loading';
+import Navbar from '@/navbar';
+import Loading from '@/loading';
 import { Suspense } from 'react';
 import { Inter } from 'next/font/google'
 

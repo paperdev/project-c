@@ -1,7 +1,7 @@
 // NOTE: https://react-icons.github.io/react-icons/icons?name=sl
 import { SlMenu } from 'react-icons/sl';
 import { dataProfile } from '@/data/profile';
-import ThemeSwitch from './themeSwitch'
+import ThemeSwitch from '@/themeSwitch'
 
 export default function Navbar({
   children,
