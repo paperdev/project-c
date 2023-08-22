@@ -4,6 +4,7 @@ import { iProfile } from '@/data/profile';
 import Image from 'next/image';
 import Link from 'next/link';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let isToast = false;
 const delayTime = 2000;

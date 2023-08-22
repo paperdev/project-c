@@ -3,6 +3,9 @@ import type { Metadata } from 'next'
 import Navbar from './navbar';
 import Loading from './loading';
 import { Suspense } from 'react';
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'hello title',
@@ -15,13 +18,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html suppressHydrationWarning>
+    <html className={inter.className} suppressHydrationWarning>
       <body>
-        <Navbar>
-        </Navbar>
-
+          <Navbar>
+          </Navbar>
+        
         <Suspense fallback={<Loading></Loading>}>
-          {children}
+            {children}
         </Suspense>
       </body>
     </html>
