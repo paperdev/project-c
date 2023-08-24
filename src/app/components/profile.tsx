@@ -1,7 +1,6 @@
 'use client';
 
 import { iProfile } from '@/data/profile';
-import Image from 'next/image';
 import Link from 'next/link';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,21 +33,24 @@ export default async function ComponentProfile({
   dataProfile: iProfile
 }) {
   return (
-    <div className='py-8 px-8 max-w-md mx-auto rounded-xl shadow-md md:max-w-2xl space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6'>
-      <Image className='block mx-auto h-24 rounded-full sm:mx-0 sm:flex-shrink-0' src={dataProfile.avatar} width={100} height={100} alt={dataProfile.name}/>
+    <div className='flex justify-center items-center py-8 max-w-md mx-auto rounded-xl shadow-md md:max-w-2xl'>
+      <div className="paper-avatar">
+        <div className="w-24 rounded-full">
+          <img src={dataProfile.avatar}/>
+        </div>
+      </div>
       
-      <div className='text-center space-y-2 sm:text-left'>
-        <div className='space-y-0.5'>
-
-          <p className='text-lg font-semibold'>
+      <div className='paper-join pl-4'>
+        <div className='py-2'>
+          <p className='text-primary text-lg font-semibold'>
             {dataProfile.name}
           </p>
 
-          <p className='text-gray-500 font-medium'>
+          <p className='font-medium'>
             {dataProfile.jobTitle}
           </p>
           
-          <p className='paper-join text-accent pt-2'>
+          <p className='paper-join text-accent pt-1'>
             <Link className='paper-tooltip' data-tip='click to open' href={dataProfile.github} target='_blank'>
                 <LuGithub className='w-6 h-6'></LuGithub>
             </Link>

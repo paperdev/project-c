@@ -29,7 +29,7 @@ export default function Navbar({
       </div>
 
       <div className='paper-navbar-end'>
-        <div>
+        <div className='px-2'>
           <ThemeSwitch></ThemeSwitch>
         </div>
 

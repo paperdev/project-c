@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from "react";
-import { FiSun, FiMoon } from 'react-icons/fi';
+import { FiSun, FiMoon, FiSmartphone, FiMonitor } from 'react-icons/fi';
 
 const THEMES = ['retro', 'halloween', 'valentine'];
 
@@ -20,8 +20,23 @@ export default function ThemeSwitch() {
     setSelected(theme);
   }
 
+  const switchView = (view: string) => {
+    const html = document.getElementsByClassName('paper-view')[0];
+    ('mobile' === view) ? html.classList.add('max-w-md') : html.classList.remove('max-w-md');
+  }
+
   return (
     <div className='paper-join'>
+      <label className='paper-swap paper-swap-rotate'>
+        <input type='checkbox'/>
+        
+        <FiSmartphone onClick={() => switchView('mobile')} className='paper-swap-on w-10 h-10'>
+        </FiSmartphone>
+        
+        <FiMonitor onClick={() => switchView('desktop')} className='paper-swap-off w-10 h-10'>
+        </FiMonitor>
+      </label>
+
       <select className='paper-select paper-select-ghost focus:outline-none paper-select-theme' value={selected} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {onChangeEvent(event)}}>
         <option value='default'>default</option>
         {THEMES.map((theme, index) => {
@@ -36,11 +51,11 @@ export default function ThemeSwitch() {
         <input type='checkbox'/>
         
         {/* sun icon */}
-        <FiSun onClick={() => switchTheme('light')} className='paper-swap-on fill-current w-10 h-10'>
+        <FiSun onClick={() => switchTheme('light')} className='paper-swap-on w-10 h-10'>
         </FiSun>
         
         {/* moon icon */}
-        <FiMoon onClick={() => switchTheme('dark')} className='paper-swap-off fill-current w-10 h-10'>
+        <FiMoon onClick={() => switchTheme('dark')} className='paper-swap-off w-10 h-10'>
         </FiMoon>
       </label>
     </div>

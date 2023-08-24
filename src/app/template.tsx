@@ -9,7 +9,7 @@ export default function Template({
   children: React.ReactNode
 }) {
   return (
-    <div>
+    <div className="paper-join paper-join-vertical flex mx-auto paper-artboard paper-view">
       <div>
         <DataProfile>
         </DataProfile>

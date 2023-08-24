@@ -20,9 +20,10 @@ export default function RootLayout({
   return (
     <html className={inter.className} suppressHydrationWarning>
       <body>
+          
           <Navbar>
           </Navbar>
-          
+
           <Suspense fallback={<Loading></Loading>}>
               {children}
           </Suspense>
