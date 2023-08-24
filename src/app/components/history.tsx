@@ -8,7 +8,7 @@ const History: React.FC<iHistory> = ({ companyName, contents }) => {
           <div key={index} className='max-w-md mx-auto rounded-xl'>
             <div className="my-2 ml-2 md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
               <p className="font-semibold title-font text-gray-500">{companyName}</p>
-              <p className="mt-1 text-indigo-500 text-sm">{content.beginDate} ~ {content.endDate}</p>
+              <p className="mt-1 text-indigo-500 text-sm">{`${content.beginYear}-${content.beginMonth}`} ~ {`${content.endYear}-${content.endMonth}`}</p>
             </div>
             <p className='my-2 mx-2 text-gray-500'>
               {content.description}

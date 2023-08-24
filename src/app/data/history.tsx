@@ -5,8 +5,10 @@ import ComponentHistory from '@/components/history';
 interface iHistory {
   companyName: string;
   contents: {
-    beginDate: string;
-    endDate: string;
+    beginYear: number;
+    beginMonth: number;
+    endYear: number;
+    endMonth: number;
     description: string;
   }[];
 };
