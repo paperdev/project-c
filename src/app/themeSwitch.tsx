@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FiSun, FiMoon, FiSmartphone, FiMonitor } from 'react-icons/fi';
+import paperCSS from '@/paper.module.scss';
 
 const THEMES = ['retro', 'halloween', 'valentine'];
 
@@ -22,7 +23,14 @@ export default function ThemeSwitch() {
 
   const switchView = (view: string) => {
     const html = document.getElementsByClassName('paper-view')[0];
-    ('mobile' === view) ? html.classList.add('max-w-md') : html.classList.remove('max-w-md');
+    if ('mobile' === view) {
+      html.classList.remove(paperCSS.desktopWidth);
+      html.classList.add(paperCSS.mobileWidth);
+    }
+    else {
+      html.classList.remove(paperCSS.mobileWidth);
+      html.classList.add(paperCSS.desktopWidth);
+    }
   }
 
   return (

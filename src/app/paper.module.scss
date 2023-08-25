@@ -1,0 +1,7 @@
+$desktopWidth : max-w-2xl;
+$mobileWidth : max-w-sm;
+
+:export {
+  desktopWidth: $desktopWidth;
+  mobileWidth: $mobileWidth;
+}

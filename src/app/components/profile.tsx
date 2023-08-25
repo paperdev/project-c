@@ -33,14 +33,14 @@ export default async function ComponentProfile({
   dataProfile: iProfile
 }) {
   return (
-    <div className='flex justify-center items-center py-8 max-w-md mx-auto rounded-xl shadow-md md:max-w-2xl'>
-      <div className="paper-avatar">
+    <div className='flex flex-col justify-center items-center text-center sm:flex sm:flex-row sm:justify-center sm:items-center sm:text-left sm:py-4 mx-auto rounded-xl shadow-md'>
+      <div className="paper-avatar ">
         <div className="w-24 rounded-full">
           <img src={dataProfile.avatar}/>
         </div>
       </div>
       
-      <div className='paper-join pl-4'>
+      <div className='paper-join sm:pl-4'>
         <div className='py-2'>
           <p className='text-primary text-lg font-semibold'>
             {dataProfile.name}

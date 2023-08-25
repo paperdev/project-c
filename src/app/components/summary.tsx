@@ -10,7 +10,7 @@ export default function ComponentSummary({
   dataSummary: iSummary
 }) {
   return(
-    <div className='py-8 px-8 max-w-md mx-auto rounded-xl shadow-md md:max-w-2xl space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6'>
+    <div className='py-8 px-8 mx-auto rounded-xl shadow-md space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6'>
       <div className='tracking-wide text-sm text-indigo-500 font-semibold'>
         Summary
       </div>
