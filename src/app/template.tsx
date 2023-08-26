@@ -11,6 +11,7 @@ export default function Template({
 }) {
   return (
     <div className={`paper-join paper-join-vertical flex mx-auto paper-artboard paper-view ${paperCSS.desktopWidth}`}>
+    
       <div>
         <DataProfile>
         </DataProfile>

@@ -34,16 +34,7 @@ export default function ThemeSwitch() {
   }
 
   return (
-    <div className='paper-join'>
-      <label className='paper-swap paper-swap-rotate'>
-        <input type='checkbox'/>
-        
-        <FiSmartphone onClick={() => switchView('mobile')} className='paper-swap-on w-10 h-10'>
-        </FiSmartphone>
-        
-        <FiMonitor onClick={() => switchView('desktop')} className='paper-swap-off w-10 h-10'>
-        </FiMonitor>
-      </label>
+    <div className='paper-join space-x-2 mx-2'>
 
       <select className='paper-select paper-select-ghost focus:outline-none paper-select-theme' value={selected} onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {onChangeEvent(event)}}>
         <option value='default'>default</option>
@@ -55,17 +46,25 @@ export default function ThemeSwitch() {
       </select>
 
       <label className='paper-swap paper-swap-rotate'>
-        {/* this hidden checkbox controls the state */}
         <input type='checkbox'/>
         
-        {/* sun icon */}
-        <FiSun onClick={() => switchTheme('light')} className='paper-swap-on w-10 h-10'>
+        <FiSun onClick={() => switchTheme('light')} className={`paper-swap-on w-${paperCSS.iconWidth} h-${paperCSS.iconHeight}`}>
         </FiSun>
         
-        {/* moon icon */}
-        <FiMoon onClick={() => switchTheme('dark')} className='paper-swap-off w-10 h-10'>
+        <FiMoon onClick={() => switchTheme('dark')} className={`paper-swap-off w-${paperCSS.iconWidth} h-${paperCSS.iconHeight}`}>
         </FiMoon>
       </label>
+
+      <label className='paper-swap paper-swap-rotate'>
+        <input type='checkbox'/>
+        
+        <FiSmartphone onClick={() => switchView('mobile')} className={`paper-swap-on w-${paperCSS.iconWidth} h-${paperCSS.iconHeight}`}>
+        </FiSmartphone>
+        
+        <FiMonitor onClick={() => switchView('desktop')} className={`paper-swap-off w-${paperCSS.iconWidth} h-${paperCSS.iconHeight}`}>
+        </FiMonitor>
+      </label>
+
     </div>
   )
 }

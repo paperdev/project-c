@@ -1,6 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import Navbar from '@/navbar';
+import { NavbarTop, NavbarBottom } from '@/components/navbar';
 import Loading from '@/loading';
 import { Suspense } from 'react';
 import { Inter } from 'next/font/google'
@@ -20,13 +20,15 @@ export default function RootLayout({
   return (
     <html className={inter.className} suppressHydrationWarning>
       <body>
-          
-          <Navbar>
-          </Navbar>
+          <NavbarTop>
+          </NavbarTop>
 
           <Suspense fallback={<Loading></Loading>}>
               {children}
           </Suspense>
+
+          <NavbarBottom>
+          </NavbarBottom>
       </body>
     </html>
   )
