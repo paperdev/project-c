@@ -1,7 +1,6 @@
-// NOTE: https://react-icons.github.io/react-icons/icons?name=sl
-import { SlHome, SlCup, SlChart } from 'react-icons/sl';
 import { dataProfile } from '@/data/profile';
 import ThemeSwitch from '@/components/themeSwitch';
+import BottomNavSwitch from '@/components/bottomNavSwitch';
 import { CONSTANT } from '@/lib/contant';
 
 const NavbarTop = (
@@ -54,21 +53,7 @@ const NavbarBottom = (
   }
 ) => {
   return (
-    <div className={`${CONSTANT.navView} paper-btm-nav sticky bottom-0 z-50 mx-auto rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] ${CONSTANT.desktopWidth}`}>
-
-      <button>
-        <SlHome className='h-8 w-8' ></SlHome>
-      </button>
-      
-      <button className='paper-active'>
-        <SlCup className='h-8 w-8' ></SlCup>
-      </button>
-      
-      <button>
-        <SlChart className='h-8 w-8' ></SlChart>
-      </button>
-
-    </div>
+    <BottomNavSwitch></BottomNavSwitch>
   )
 }
 
