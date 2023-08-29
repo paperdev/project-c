@@ -2,7 +2,7 @@
 import { SlHome, SlCup, SlChart } from 'react-icons/sl';
 import { dataProfile } from '@/data/profile';
 import ThemeSwitch from '@/components/themeSwitch';
-import paperCSS from '@/paper.module.scss';
+import { CONSTANT } from '@/lib/contant';
 
 const NavbarTop = (
   {
@@ -12,12 +12,12 @@ const NavbarTop = (
   }
 ) => {
   return (
-    <div className={`paper-navbar sticky top-0 z-50 mx-auto bg-base-100 ${paperCSS.desktopWidth}`}>
+    <div className={`${CONSTANT.navView} paper-navbar sticky top-0 z-50 mx-auto bg-base-100 rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] ${CONSTANT.desktopWidth}`}>
 
       <div className='paper-navbar-start'>
         <div className='paper-dropdown paper-dropdown-start'>
           <label tabIndex={0} className='paper-btn paper-btn-ghost paper-btn-circle paper-avatar'>
-            <div className={`w-${paperCSS.iconWidth} rounded-full`}>
+            <div className={`${CONSTANT.iconWidth} rounded-full`}>
               <img src={dataProfile.avatar}/>
             </div>
           </label>
@@ -54,7 +54,7 @@ const NavbarBottom = (
   }
 ) => {
   return (
-    <div className={`paper-btm-nav sticky bottom-0 z-50 mx-auto ${paperCSS.desktopWidth}`}>
+    <div className={`${CONSTANT.navView} paper-btm-nav sticky bottom-0 z-50 mx-auto rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] ${CONSTANT.desktopWidth}`}>
 
       <button>
         <SlHome className='h-8 w-8' ></SlHome>

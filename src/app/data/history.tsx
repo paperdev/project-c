@@ -1,5 +1,5 @@
 import 'server-only';
-import { Request } from '@/utilities/request';
+import { Request } from '@/lib/request';
 import ComponentHistory from '@/components/history';
 
 interface iHistory {

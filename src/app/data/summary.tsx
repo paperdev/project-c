@@ -1,5 +1,5 @@
 import 'server-only';
-import { Request } from '@/utilities/request';
+import { Request } from '@/lib/request';
 import ComponentSummary from '@/components/summary';
 
 interface iSummary {
