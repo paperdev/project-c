@@ -1,8 +1,5 @@
-import Template from '@/template';
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <Template>
-    </Template>
-  )
+  redirect('/home');
 }

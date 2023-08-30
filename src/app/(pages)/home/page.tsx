@@ -4,7 +4,7 @@ import { DataSummary } from '@/data/summary';
 import { DataHistory } from '@/data/history';
 import { CONSTANT } from '@/lib/contant';
 
-export default function Template({
+export default function Home({
   children,
 }: {
   children: React.ReactNode
