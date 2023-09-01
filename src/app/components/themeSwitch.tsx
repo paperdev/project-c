@@ -71,15 +71,19 @@ export default function ThemeSwitch() {
         </FiMoon>
       </label>
 
-      <label className='paper-swap paper-swap-rotate'>
-        <input type='checkbox'/>
-        
-        <FiSmartphone onClick={() => switchView('mobile')} className={`paper-swap-on ${CONSTANT.iconWidth} ${CONSTANT.iconHeight}`}>
-        </FiSmartphone>
-        
-        <FiMonitor onClick={() => switchView('desktop')} className={`paper-swap-off ${CONSTANT.iconWidth} ${CONSTANT.iconHeight}`}>
-        </FiMonitor>
-      </label>
+      {
+        /*
+        <label className='paper-swap paper-swap-rotate'>
+          <input type='checkbox'/>
+          
+          <FiSmartphone onClick={() => switchView('mobile')} className={`paper-swap-on ${CONSTANT.iconWidth} ${CONSTANT.iconHeight}`}>
+          </FiSmartphone>
+          
+          <FiMonitor onClick={() => switchView('desktop')} className={`paper-swap-off ${CONSTANT.iconWidth} ${CONSTANT.iconHeight}`}>
+          </FiMonitor>
+        </label>
+        */
+      }
 
     </div>
   )
