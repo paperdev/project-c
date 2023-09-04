@@ -12,7 +12,6 @@ export default async function Stats({
   children: React.ReactNode
 }) {
   const dataHistory = await getDataHistory();
-
   const optionData: any = [];
   const monthPerYear = 12;
   dataHistory.map((history, index) => {
