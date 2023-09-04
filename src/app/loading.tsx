@@ -1,8 +1,6 @@
-import { CONSTANT } from '@/lib/contant';
-
 export default function Loading() {
   return (
-    <div className={`border shadow-md rounded-md p-4 w-full mx-auto ${CONSTANT.desktopWidth}`}>
+    <div>
       <div className="animate-pulse flex space-x-4">
         <div className="rounded-full bg-slate-200 h-10 w-10"></div>
         <div className="flex-1 space-y-6 py-1">

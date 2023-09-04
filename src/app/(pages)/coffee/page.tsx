@@ -1,4 +1,3 @@
-import { CONSTANT } from '@/lib/contant';
 import ComponentChat, { iChatData } from '@/components/chat';
 
 export default function Coffee({
@@ -48,11 +47,12 @@ export default function Coffee({
   ]
 
   return (
-    <div className={`paper-join paper-join-vertical flex mx-auto paper-artboard paper-view ${CONSTANT.desktopWidth}`}>
+    <div>
       {textList.map((text, index) => {
-        return <ComponentChat chatData={text}><></></ComponentChat>
+        return (
+          <ComponentChat chatData={text}><></></ComponentChat>
+        )
       })}
-      
     </div>
   )
 }

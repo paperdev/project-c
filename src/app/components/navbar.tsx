@@ -11,7 +11,7 @@ const NavbarTop = (
   }
 ) => {
   return (
-    <div className={`${CONSTANT.navView} paper-navbar sticky top-0 z-50 mx-auto bg-base-100 rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] ${CONSTANT.desktopWidth}`}>
+    <div className={`${CONSTANT.navView} paper-navbar sticky top-0 mx-auto bg-base-100 rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
 
       <div className='paper-navbar-start'>
         <div className='paper-dropdown paper-dropdown-start'>
@@ -34,7 +34,7 @@ const NavbarTop = (
       </div>
 
       <div className='paper-navbar-center'>
-        <a className='paper-btn paper-btn-ghost normal-case text-xl'>Home</a>
+        <div className='paper-btn paper-btn-ghost capitalize paper-nav-title text-xl'>Home</div>
       </div>
 
       <div className='paper-navbar-end'>

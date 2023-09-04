@@ -2,7 +2,6 @@
 
 import React from 'react';
 import ComponentChart from '@/components/chart';
-import { CONSTANT } from '@/lib/contant';
 import { ECElementEvent } from 'echarts/core';
 import { getDataHistory} from '@/data/history';
 
@@ -76,7 +75,7 @@ export default async function Stats({
   }
   
   return (
-    <div className={`paper-join paper-join-vertical flex mx-auto paper-artboard paper-view ${CONSTANT.desktopWidth}`}>
+    <div>
       <ComponentChart option={option} events={onEvents}>
       </ComponentChart>
     </div>
