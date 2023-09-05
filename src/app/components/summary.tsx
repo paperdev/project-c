@@ -1,5 +1,3 @@
-'use client';
-
 import { iSummary } from '@/data/summary';
 
 export default function ComponentSummary({
