@@ -6,8 +6,8 @@ export default function ComponentChatData({
 }: {
   chatData: iChatData,
 }) {
-  
   const chatPosition = chatData.isSender ? 'paper-chat-end' : 'paper-chat-start';
+  
   return(
     <div className={`paper-chat ${chatPosition}`}>
       <div className='paper-chat-image avatar'>

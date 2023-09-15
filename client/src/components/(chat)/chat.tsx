@@ -1,18 +1,28 @@
 import ComponentChatData from '@/components/(chat)/chatData';
-import { chatList } from 'shared/data/chat';
+import { iChatData } from 'shared/interface/chat';
 
-export default function ComponentChat() {
+async function getChatList() {
+  const res = await fetch(process.env.CHAT_URL, {cache: 'no-cache'});
+ 
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+ 
+  return res.json();
+}
+
+export default async function ComponentChat() {
+  const chatList = await getChatList();
+
   return(
     <>
-      <div className=''>
-        {
-          chatList.map((text, index) => {
-            return (
-              <ComponentChatData key={index} chatData={text} />
-            )
-          })
-        }
-      </div>
+      {
+        chatList.map((chatData: iChatData, index: number) => {
+          return (
+            <ComponentChatData key={index} chatData={chatData} />
+          )
+        })
+      }
     </>
   )
 }

@@ -42,5 +42,6 @@ let chatList: iChatData[] = [
 ];
 
 export {
-  chatList
+  chatList,
+  nameAdmin,
 }

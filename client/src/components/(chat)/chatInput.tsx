@@ -1,20 +1,20 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const nameSender = 'Anonymous';
-const nameAdmin = 'Admin';
 
 export default function ComponentChatInput() {
   const [inputValue, setInputValue] = useState('');
-  const [chatList, setChatList] = useState([]);
+  const router = useRouter();
 
-  const checkKeyDown = (event: React.KeyboardEvent) => {
+  const checkKeyDown = async (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' || event.code === 'Enter') {
       if (!inputValue) {
         return;
       }
-      sendText(inputValue);
+      await sendText(inputValue);
       setInputValue('');
     }
   }
@@ -28,17 +28,31 @@ export default function ComponentChatInput() {
     setInputValue(event.currentTarget.value);
   }
 
-  const sendText = (text: string) => {
-    chatList.push(
+  const sendText = async (text: string) => {
+    await fetch(process.env.CHAT_URL, 
       {
-        avatar: '',
-        name: nameSender,
-        text: text,
-        time: new Date().toString(),
-        isSender: true,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(
+          {
+            avatar: '',
+            name: nameSender,
+            text: text,
+            time: '',
+            isSender: true,
+          }
+        )
       }
     );
-    setChatList(chatList);
+    router.refresh();
+    scrollToBottom();
+  }
+
+  const scrollToBottom = () => {
+    const chatBottomDiv = document.getElementById('chatBottomDiv');
+    chatBottomDiv.scrollIntoView({ behavior: "smooth", block: 'end', inline: "nearest" });
   }
   
   return(

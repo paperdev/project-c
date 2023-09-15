@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { SlHome, SlCup, SlChart } from 'react-icons/sl';
 import { useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import ComponentChatInput from '@/components/(chat)/chatInput';
 
 const CLASS_NAME_BUTTON_ACTIVE = 'paper-active';
 const URL_HOME = '/home';
@@ -23,10 +22,6 @@ export default function Footer() {
 
   return (
     <>
-      {
-        URL_CHAT === currentUrl && <ComponentChatInput />
-      }
-      
       <div className='paper-nav-bottom' ref={navBottomRef}>
 
         <Link href={URL_HOME} className={`paper-btn-outline ${URL_HOME === currentUrl ? CLASS_NAME_BUTTON_ACTIVE : ''}`} onClick={(event: React.MouseEvent<HTMLAnchorElement>) => {activateNav(event);}}>
