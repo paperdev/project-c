@@ -1,5 +1,5 @@
 import { LuCodesandbox, LuSmartphone } from 'react-icons/lu';
-import { iChatData } from 'shared/interface/chat';
+import { iChatData } from '@/shared/interface/chat';
 
 export default function ComponentChatData({
   chatData

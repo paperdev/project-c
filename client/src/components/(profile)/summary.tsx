@@ -1,4 +1,4 @@
-import { iSummary } from 'interface/data/summary';
+import { iSummary } from '@/shared/interface/summary';
 
 export default function ComponentSummary({
   dataSummary

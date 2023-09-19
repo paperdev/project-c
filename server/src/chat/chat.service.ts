@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { chatList as defaulChatList, nameAdmin } from 'shared/data/chat';
-import { iChatData } from 'shared/interface/chat';
+import { chatList as defaulChatList, nameAdmin } from '@/shared/data/chat';
+import { iChatData } from '@/shared/interface/chat';
 
 @Injectable()
 export class ChatService {

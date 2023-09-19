@@ -1,5 +1,5 @@
 import ComponentChatData from '@/components/(chat)/chatData';
-import { iChatData } from 'shared/interface/chat';
+import { iChatData } from '@/shared/interface/chat';
 
 async function getChatList() {
   const res = await fetch(process.env.CHAT_URL, {cache: 'no-cache'});

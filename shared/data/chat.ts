@@ -1,4 +1,4 @@
-import { iChatData } from '../interface/chat';
+import { iChatData } from '@/shared/interface/chat';
 
 const nameSender = 'Anonymous';
 const nameAdmin = 'Admin';

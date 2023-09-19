@@ -1,10 +1,10 @@
 'use client';
 
-import { iProfile } from 'interface/data/profile';
+import { iProfile } from '@/shared/interface/profile';
 import Link from 'next/link';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { LuGithub, LuMail } from 'react-icons/lu';
+import { LuGithub, LuMail, LuLinkedin } from 'react-icons/lu';
 
 let isToast = false;
 const delayTime = 2000;
@@ -40,22 +40,25 @@ export default async function ComponentProfile({
       
       <div className='paper-join sm:pl-4'>
         <div className='py-2'>
-          <p className='text-primary text-lg font-semibold'>
+          <div className='text-primary text-lg font-semibold'>
             {dataProfile.name}
-          </p>
+          </div>
 
-          <p className='font-medium'>
+          <div className='font-medium'>
             {dataProfile.jobTitle}
-          </p>
+          </div>
           
-          <p className='paper-join text-accent pt-1'>
-            <Link className='paper-tooltip' data-tip='click to open' href={dataProfile.github} target='_blank'>
+          <div className='paper-join text-accent pt-2'>
+            <Link className='px-1' href={dataProfile.github} target='_blank'>
                 <LuGithub className='w-6 h-6'></LuGithub>
             </Link>
-            <button className='px-2 paper-tooltip' data-tip='click to copy' onClick={() => {copyText(dataProfile.email)}}>
+            <Link className='px-1' href={dataProfile.linkedin} target='_blank'>
+                <LuLinkedin className='w-6 h-6'></LuLinkedin>
+            </Link>
+            <button className='px-1 paper-tooltip' data-tip='click to copy' onClick={() => {copyText(dataProfile.email)}}>
               <LuMail className='w-6 h-6'></LuMail>
             </button>
-          </p>
+          </div>
 
           <ToastContainer/>
         </div>

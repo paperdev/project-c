@@ -8,11 +8,11 @@
   }
 
   .paper-body {
-    @apply flex-1 rounded-xl overflow-y-scroll
+    @apply flex-1 rounded-xl scrollbar-hide
   }
 
   .paper-nav-top {
-    @apply bg-base-100 sticky top-0 backdrop-blur-xl mx-auto flex-none rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] paper-navbar
+    @apply bg-base-100 sticky top-0 z-50 backdrop-blur-xl mx-auto flex-none rounded-xl shadow-[0_3px_10px_rgb(0,0,0,0.2)] paper-navbar
   }
 
   .paper-nav-bottom {

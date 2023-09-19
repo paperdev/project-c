@@ -1,4 +1,4 @@
-import { iHistory } from 'interface/data/history';
+import { iHistory } from '@/shared/interface/history';
 
 export default function ComponentHistory({
   dataHistory

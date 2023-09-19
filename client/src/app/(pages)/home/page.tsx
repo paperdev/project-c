@@ -3,18 +3,27 @@ import ComponentTag from '@/components/(profile)/tag';
 import ComponentSummary from '@/components/(profile)/summary';
 import ComponentHistory from '@/components/(profile)/history';
 
-import dataProfile from '@/data/profile.json';
-import dataTags from '@/data/tags.json';
-import dataSummary from '@/data/summary.json';
-import dataHistory from '@/data/history.json';
+import { iProfileAll } from '@/shared/interface/profile';
 
-export default function Page() {
+async function getPofileAll() {
+  const res = await fetch(process.env.PROFILE_URL);
+ 
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+ 
+  return res.json();
+}
+
+export default async function Page() {
+  const profileAll: iProfileAll= await getPofileAll();
+
   return (
     <>
-      <ComponentProfile dataProfile={dataProfile} />
-      <ComponentTag dataTags={dataTags} />
-      <ComponentSummary dataSummary={dataSummary} />
-      <ComponentHistory dataHistory={dataHistory} />
+      <ComponentProfile dataProfile={profileAll.profile} />
+      <ComponentTag dataTags={profileAll.tags} />
+      <ComponentSummary dataSummary={profileAll.summary} />
+      <ComponentHistory dataHistory={profileAll.history} />
     </>
   )
 }
