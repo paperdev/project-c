@@ -1,9 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 const nameSender = 'Anonymous';
+
+const ScoollHevavior: Record<string, ScrollBehavior> = {
+  smooth: 'smooth',
+  instant: 'instant',
+  auto: 'auto',
+}
 
 export default function ComponentChatInput() {
   const [inputValue, setInputValue] = useState('');
@@ -47,12 +53,19 @@ export default function ComponentChatInput() {
       }
     );
     router.refresh();
-    scrollToBottom();
+    scrollToBottom(ScoollHevavior.smooth);
   }
 
-  const scrollToBottom = () => {
+  useEffect(() => {
+    scrollToBottom(ScoollHevavior.instant);
+  });
+
+  const scrollToBottom = (behavior: ScrollBehavior) => {
     const chatBottomDiv = document.getElementById('chatBottomDiv');
-    chatBottomDiv.scrollIntoView({ behavior: "smooth", block: 'end', inline: "nearest" });
+    if (!chatBottomDiv) {
+      return;
+    }
+    chatBottomDiv.scrollIntoView({ behavior: behavior, block: 'end', inline: "nearest" });
   }
   
   return(

@@ -8,7 +8,7 @@
   }
 
   .paper-body {
-    @apply flex-1 rounded-xl scrollbar-hide
+    @apply flex-1 rounded-xl scrollbar-hide overflow-y-scroll
   }
 
   .paper-nav-top {
