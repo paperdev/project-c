@@ -3,5 +3,5 @@ interface iTag {
 }
 
 export {
-  iTag,
+  type iTag,
 }

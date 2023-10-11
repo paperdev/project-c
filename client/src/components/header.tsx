@@ -8,13 +8,13 @@ export default function Header({
 }) {
   return (
     <>
-      <div className="paper-nav-top">
-        <div className="flex-1">
-          <a className="paper-btn paper-btn-ghost capitalize text-xl">{title}</a>
+      <div className='paper-nav-top'>
+        <div className='flex-1'>
+          <a className='paper-btn paper-btn-ghost capitalize text-xl'>{title}</a>
         </div>
 
-        <div className="flex-none gap-2">
-          <div className="paper-dropdown paper-dropdown-end">
+        <div className='flex-none gap-2'>
+          <div className='paper-dropdown paper-dropdown-end'>
             <label tabIndex={0} className='paper-btn paper-btn-ghost paper-btn-circle paper-avatar'>
               <div className='paper-icon-width paper-icon-height rounded-full'>
                 <img src={dataProfile.avatar}/>

@@ -65,7 +65,7 @@ export default function ComponentChatInput() {
     if (!chatBottomDiv) {
       return;
     }
-    chatBottomDiv.scrollIntoView({ behavior: behavior, block: 'end', inline: "nearest" });
+    chatBottomDiv.scrollIntoView({ behavior: behavior, block: 'end', inline: 'nearest' });
   }
   
   return(

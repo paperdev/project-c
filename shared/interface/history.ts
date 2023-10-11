@@ -8,5 +8,5 @@ interface iHistory {
 };
 
 export {
-  iHistory,
+  type iHistory,
 }

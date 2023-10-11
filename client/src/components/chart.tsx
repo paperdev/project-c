@@ -94,7 +94,7 @@ export default function ComponentChart({
       option={option}
       // notMerge={true}
       // lazyUpdate={true}
-      // theme={"theme_name"}
+      // theme={'theme_name'}
       // onChartReady={() => {}}
       onEvents={events}
       // opts={}

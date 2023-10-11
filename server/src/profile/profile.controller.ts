@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { ProfileService } from './profile.service';
-import { iProfileAll } from '@/shared/interface/profile';
+import { iProfileAll, tProfileAll } from '@/shared/interface/profile';
 
 @Controller('profile')
 export class ProfileController {
@@ -11,4 +11,10 @@ export class ProfileController {
     return this.profileService.findAll();
   }
 
+  @Get(':type')
+  async findOne(@Param('type') type: string): Promise<tProfileAll | undefined> {
+    return this.profileService.findOne(type)
+      ? this.profileService.findOne(type)
+      : undefined;
+  }
 }

@@ -7,5 +7,5 @@ interface iChatData {
 };
 
 export {
-  iChatData,
+  type iChatData,
 }

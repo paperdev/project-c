@@ -11,7 +11,11 @@ interface iProfile {
   email: string;
 };
 
+type tProfileAll = iProfile | iTag[] | iSummary | iHistory[];
+
 interface iProfileAll {
+  [index: string]: tProfileAll;
+
   profile: iProfile;
   tags: iTag[];
   history: iHistory[];
@@ -19,6 +23,7 @@ interface iProfileAll {
 }
 
 export {
-  iProfile,
-  iProfileAll
+  type iProfile,
+  type iProfileAll,
+  type tProfileAll,
 }

@@ -3,5 +3,5 @@ interface iSummary {
 };
 
 export {
-  iSummary,
+  type iSummary,
 }

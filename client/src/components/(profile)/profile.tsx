@@ -32,8 +32,8 @@ export default async function ComponentProfile({
 }) {
   return (
     <div className='flex flex-col justify-center items-center text-center sm:flex sm:flex-row sm:justify-center sm:items-center sm:text-left sm:py-4 mx-auto rounded-xl shadow-md'>
-      <div className="paper-avatar ">
-        <div className="w-24 rounded-full">
+      <div className='paper-avatar '>
+        <div className='w-24 rounded-full'>
           <img src={dataProfile.avatar}/>
         </div>
       </div>

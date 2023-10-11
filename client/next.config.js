@@ -14,7 +14,10 @@ const nextConfig = {
   env: {
     CHAT_URL : `${BASE_URL}/chat`,
     PROFILE_URL : `${BASE_URL}/profile`,
-  }
+    PROFILE_URL_HISTORY : `${BASE_URL}/profile/history`,
+  },
+
+  // output: 'export'
 }
  
 module.exports = nextConfig;
