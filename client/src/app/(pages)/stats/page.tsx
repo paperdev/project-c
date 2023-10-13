@@ -13,7 +13,12 @@ async function getHistory() {
 }
 
 export default async function Page() {
-  const dataHistory = await getHistory();
+  let dataHistory = await getHistory();
+  
+  if (!process.env.WITH_SERVER) {
+    dataHistory = dataHistory.history;
+  }
+
   const sortedData: any = [];
   const monthPerYear = 12;
   dataHistory.map((history: iHistory) => {

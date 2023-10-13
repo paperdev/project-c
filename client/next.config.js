@@ -16,13 +16,15 @@ const withServer = 0 == process.env.WITH_SERVER ? false : true;
   rawURL = 'https://raw.githubusercontent.com/paperdev/project-c/master/shared/data/json/profile.json';
 */
 const PROFILE_URL = 'https://raw.githubusercontent.com/paperdev/project-c/master/shared/data/json/profile.json';
+const CHAT_URL = 'https://raw.githubusercontent.com/paperdev/project-c/master/shared/data/json/chat.json';
 
 const nextConfig = {
   /* config options here */
   env: {
-    CHAT_URL : `${BASE_URL}/chat`,
+    WITH_SERVER: withServer,
+    CHAT_URL : withServer ? `${BASE_URL}/chat` : CHAT_URL,
     PROFILE_URL : withServer ? `${BASE_URL}/profile` : PROFILE_URL,
-    PROFILE_URL_HISTORY : `${BASE_URL}/profile/history`,
+    PROFILE_URL_HISTORY : withServer ? `${BASE_URL}/profile/history` : PROFILE_URL,
   },
 
   // output: 'export'
