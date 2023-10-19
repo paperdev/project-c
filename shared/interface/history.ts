@@ -4,7 +4,7 @@ interface iHistory {
   beginMonth: number;
   endYear: number;
   endMonth: number;
-  description: string;
+  description: string[];
 };
 
 export {

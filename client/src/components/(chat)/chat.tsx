@@ -2,7 +2,15 @@ import ComponentChatData from '@/components/(chat)/chatData';
 import { iChatData } from '@/shared/interface/chat';
 
 async function getChatList() {
-  const res = await fetch(process.env.CHAT_URL, {cache: 'no-cache'});
+  const res = await fetch(
+    process.env.CHAT_URL,
+    {
+      headers: {
+        'Content-type': 'application/json;',
+      },
+      cache: 'no-cache'
+    }
+  );
  
   if (!res.ok) {
     throw new Error('Failed to fetch data');
