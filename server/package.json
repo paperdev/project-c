@@ -5,13 +5,13 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "main": "./dist/server/src/main.js",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "nest build",
     "start": "nest start",
     "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main"
+    "start:debug": "nest start --debug --watch"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
