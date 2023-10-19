@@ -6,12 +6,19 @@ import ComponentHistory from '@/components/(profile)/history';
 import { iProfileAll } from '@/shared/interface/profile';
 
 async function getPofileAll() {
-  const res = await fetch(process.env.PROFILE_URL);
- 
+  const res = await fetch(
+    process.env.PROFILE_URL,
+    {
+      headers: {
+        'Content-type': 'application/json;',
+      },
+    }
+  );
+
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
- 
+
   return res.json();
 }
 

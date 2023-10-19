@@ -10,7 +10,7 @@ export default function ComponentSummary({
       <div className='tracking-wide text-sm text-indigo-500 font-semibold'>
         Summary
       </div>
-      <p className='mt-2 text-gray-500'>
+      <p className='mt-2 text-gray-500 whitespace-pre-wrap'>
         {dataSummary.contents}
       </p>
   </div>

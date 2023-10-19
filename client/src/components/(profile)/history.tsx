@@ -22,8 +22,12 @@ export default function ComponentHistory({
                   <p className='font-semibold title-font text-gray-500'>{history.companyName}</p>
                   <p className='mt-1 text-indigo-500 text-sm'>{`${history.beginYear}-${history.beginMonth}`} ~ {`${history.endYear}-${history.endMonth}`}</p>
                 </div>
-                <p className='my-2 mx-2 text-gray-500'>
-                  {history.description}
+                <p className='my-2 mx-2 text-gray-500 whitespace-pre-wrap'>
+                  {
+                    history.description.map((description, index) => {
+                      return <>• {description}<br/></>;
+                    })
+                  }
                 </p>
               </div>
               )

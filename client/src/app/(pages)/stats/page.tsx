@@ -3,7 +3,14 @@ import ComponentStats from '@/components/(stats)/stats';
 import { iHistory } from '@/shared/interface/history';
 
 async function getHistory() {
-  const res = await fetch(process.env.PROFILE_URL_HISTORY);
+  const res = await fetch(
+    process.env.PROFILE_URL_HISTORY,
+    {
+      headers: {
+        'Content-type': 'application/json;',
+      },
+    }
+  );
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');
@@ -15,7 +22,7 @@ async function getHistory() {
 export default async function Page() {
   let dataHistory = await getHistory();
   
-  if (!process.env.WITH_SERVER) {
+  if ('dev' === process.env.SERVER_TYPE) {
     dataHistory = dataHistory.history;
   }
 
