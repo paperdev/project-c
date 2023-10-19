@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf .next",
-    "dev": "pnpm run clean && next dev",
+    "dev": "next dev",
     "build": "pnpm run clean && next build",
     "start": "next start"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.1.1",
     "echarts": "^5.4.3",
     "echarts-for-react": "^3.0.2",
     "next": "^13.4.19",

@@ -1,5 +1,6 @@
 import '@/css/globals.css';
 import TemplateHome from '@/components/template/home';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function RootLayout({
   children,
@@ -12,6 +13,7 @@ export default function RootLayout({
         <TemplateHome>
           {children}
         </TemplateHome>
+        <Analytics/>
       </body>
     </html>
   );
