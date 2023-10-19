@@ -7,8 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "clean": "rm -rf dist",
-    "prestart": "pnpm run clean",
-    "build": "pnpm run clean && nest build",
+    "build": "nest build",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
