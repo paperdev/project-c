@@ -23,5 +23,11 @@
       "@/*": ["./src/*"],
       "@/shared/*": ["../shared/*"]
     }
-  }
+  },
+  "include": [
+    "package.json",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": ["node_modules"]
 }
