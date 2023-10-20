@@ -7,7 +7,8 @@ const dotenv = require('dotenv');
 
 // TODO: 
 dotenv.config({ path: path.join(__dirname, '../.env.local') });
-const BASE_URL = `http://${process.env.SERVER_URL || 'localhost'}:${process.env.SERVER_PORT || 7777}`;
+// const BASE_URL = `http://${process.env.SERVER_URL || 'localhost'}:${process.env.SERVER_PORT || 7777}`;
+const BASE_URL = 'prod' === process.env.SERVER_TYPE ? `https://${process.env.SERVER_URL}` : `http://localhost:${process.env.SERVER_PORT || 7777}`;
 
 /*
   NOTE: 
