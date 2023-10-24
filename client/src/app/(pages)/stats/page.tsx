@@ -22,7 +22,7 @@ async function getHistory() {
 export default async function Page() {
   let dataHistory = await getHistory();
   
-  if ('dev' === process.env.SERVER_TYPE) {
+  if ('github' === process.env.SERVER_TYPE) {
     dataHistory = dataHistory.history;
   }
 

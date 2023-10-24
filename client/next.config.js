@@ -20,22 +20,19 @@ const CHAT_URL = 'https://raw.githubusercontent.com/paperdev/project-c/master/sh
 
 /* 
   NOTE: process.env.SERVER_TYPE
-    dev = github 
-    local = localhost api
+    github = github json
+    dev = dev api
     prod = Nestjs server
 */
 
-let chatUrl = CHAT_URL;
-let profileUrl = PROFILE_URL;
-let historyUrl = PROFILE_URL;
+let chatUrl = `${BASE_URL}/chat`;
+let profileUrl = `${BASE_URL}/profile`;
+let historyUrl = `${BASE_URL}/profile/history`;
 
-if ('prod' === process.env.SERVER_TYPE) {
-  chatUrl = `${BASE_URL}/chat`;
-  profileUrl = `${BASE_URL}/profile`;
-  historyUrl = `${BASE_URL}/profile/history`;
-}
-else if ('local' === process.env.SERVER_TYPE) {
-  // TODO:
+if ('github' === process.env.SERVER_TYPE) {
+  chatUrl = CHAT_URL;
+  profileUrl = PROFILE_URL;
+  historyUrl = PROFILE_URL;
 }
 
 const nextConfig = {
