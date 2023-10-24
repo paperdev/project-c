@@ -13,7 +13,10 @@ export default function RootLayout({
         <TemplateHome>
           {children}
         </TemplateHome>
-        <Analytics/>
+        {
+          process.env.SERVER_TYPE === 'prod' && <Analytics/>
+        }
+        
       </body>
     </html>
   );
