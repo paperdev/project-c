@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 // NOTE: https://react-icons.github.io/react-icons/icons?name=sl
-import { SlHome, SlCup, SlChart } from 'react-icons/sl';
+import { SlHome, SlCup, SlChart, SlCompass } from 'react-icons/sl';
 import { useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import ComponentChatInput from '@/components/(chat)/chatInput';
@@ -10,6 +10,7 @@ import ComponentChatInput from '@/components/(chat)/chatInput';
 const CLASS_NAME_BUTTON_ACTIVE = 'paper-active';
 const URL_HOME = '/home';
 const URL_CHAT = '/chat';
+const URL_POST = '/post';
 const URL_STATS = '/stats';
 
 export default function Footer() {
@@ -37,10 +38,14 @@ export default function Footer() {
           <SlCup className='paper-icon-width paper-icon-height'></SlCup>
         </Link>
         
+        <Link href={URL_POST} className={`paper-btn-outline ${URL_POST === currentUrl ? CLASS_NAME_BUTTON_ACTIVE : ''}`} onClick={(event: React.MouseEvent<HTMLAnchorElement>) => {activateNav(event);}}>
+          <SlCompass className='paper-icon-width paper-icon-height'></SlCompass>
+        </Link>
+
         <Link href={URL_STATS} className={`paper-btn-outline ${URL_STATS === currentUrl ? CLASS_NAME_BUTTON_ACTIVE : ''}`} onClick={(event: React.MouseEvent<HTMLAnchorElement>) => {activateNav(event);}}>
           <SlChart className='paper-icon-width paper-icon-height'></SlChart>
         </Link>
-
+        
       </div>
     </>
   );

@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ChatModule } from './chat/chat.module';
 import { ProfileModule } from './profile/profile.module';
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ProfileModule } from './profile/profile.module';
     }),
     ChatModule,
     ProfileModule,
+    PostModule,
   ],
   controllers: [AppController],
   providers: [AppService],
