@@ -10,7 +10,7 @@ import ComponentChatInput from '@/components/(chat)/chatInput';
 const CLASS_NAME_BUTTON_ACTIVE = 'paper-active';
 const URL_HOME = '/home';
 const URL_CHAT = '/chat';
-const URL_CONTENT = '/content';
+const URL_POST = '/post';
 const URL_STATS = '/stats';
 
 export default function Footer() {
@@ -38,7 +38,7 @@ export default function Footer() {
           <SlCup className='paper-icon-width paper-icon-height'></SlCup>
         </Link>
         
-        <Link href={URL_CONTENT} className={`paper-btn-outline ${URL_CONTENT === currentUrl ? CLASS_NAME_BUTTON_ACTIVE : ''}`} onClick={(event: React.MouseEvent<HTMLAnchorElement>) => {activateNav(event);}}>
+        <Link href={URL_POST} className={`paper-btn-outline ${URL_POST === currentUrl ? CLASS_NAME_BUTTON_ACTIVE : ''}`} onClick={(event: React.MouseEvent<HTMLAnchorElement>) => {activateNav(event);}}>
           <SlCompass className='paper-icon-width paper-icon-height'></SlCompass>
         </Link>
 

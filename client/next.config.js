@@ -17,7 +17,7 @@ const BASE_URL = 'prod' === process.env.SERVER_TYPE ? `https://${process.env.SER
 */
 const PROFILE_URL = 'https://raw.githubusercontent.com/paperdev/project-c/master/shared/data/json/profile.json';
 const CHAT_URL = 'https://raw.githubusercontent.com/paperdev/project-c/master/shared/data/json/chat.json';
-const CONTENT_URL = 'https://raw.githubusercontent.com/paperdev/project-c/master/shared/data/json/content.json';
+const POST_URL = 'https://raw.githubusercontent.com/paperdev/project-c/master/shared/data/json/content.json';
 
 /* 
   NOTE: process.env.SERVER_TYPE
@@ -29,13 +29,13 @@ const CONTENT_URL = 'https://raw.githubusercontent.com/paperdev/project-c/master
 let chatUrl = `${BASE_URL}/chat`;
 let profileUrl = `${BASE_URL}/profile`;
 let historyUrl = `${BASE_URL}/profile/history`;
-let contentUrl = `${BASE_URL}/content`;
+let postUrl = `${BASE_URL}/post`;
 
 if ('github' === process.env.SERVER_TYPE) {
   chatUrl = CHAT_URL;
   profileUrl = PROFILE_URL;
   historyUrl = PROFILE_URL;
-  historyUrl = CONTENT_URL;
+  postUrl = POST_URL;
 }
 
 const nextConfig = {
@@ -45,7 +45,7 @@ const nextConfig = {
     CHAT_URL : chatUrl,
     PROFILE_URL : profileUrl,
     PROFILE_URL_HISTORY : historyUrl,
-    CONTENT_URL : contentUrl,
+    POST_URL : postUrl,
   },
 
   // output: 'export'
