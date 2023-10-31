@@ -1,5 +1,9 @@
+'use client';
+
 import { iPost } from '@/shared/interface/post';
 import { LuHeart, LuMessageSquare, LuShare2, LuBookmark } from 'react-icons/lu';
+import ComponentComment from '@/components/(post)/comment';
+import { useState } from 'react';
 
 export default function ComponentPost({
   dataPost
@@ -9,6 +13,18 @@ export default function ComponentPost({
   const iconWeight = 'w-7';
   const iconHeight = 'h-7';
   const maxNumber = 100;
+
+  const [dataComments, setDataComments] = useState([]);
+
+  const onClick = (event: React.MouseEvent, comments: string[]) => {
+    setDataComments(comments);
+
+    const commentsElement = event.currentTarget.parentElement.parentElement.parentElement.nextElementSibling;
+    const isHidden = commentsElement.classList.contains('hidden');
+    isHidden ? commentsElement.classList.remove('hidden') : commentsElement.classList.add('hidden');
+
+  }
+
   return (
     <>
       {
@@ -44,7 +60,7 @@ export default function ComponentPost({
                 
                 <div className='flex space-x-2'>
                   <div className='flex space-x-1 items-center'>
-                    <LuMessageSquare className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuMessageSquare>
+                    <LuMessageSquare onClick={(event: React.MouseEvent) => {onClick(event, post.comments);}} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuMessageSquare>
                     <div>{(maxNumber < post.comments.length ? `${maxNumber}+` : `${post.comments.length}`) }</div>
                   </div>
                   <div className='flex space-x-1 items-center'>
@@ -52,6 +68,10 @@ export default function ComponentPost({
                     <div>{(maxNumber < post.likeCount ? `${maxNumber}+` : `${post.likeCount}`)}</div>
                   </div>
                 </div>
+              </div>
+
+              <div className='hidden p-6'>
+                <ComponentComment dataComments={dataComments}></ComponentComment>
               </div>
             </div>
             )
