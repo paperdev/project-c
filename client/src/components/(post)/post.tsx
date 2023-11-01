@@ -1,7 +1,7 @@
 'use client';
 
 import { iPost } from '@/shared/interface/post';
-import { LuHeart, LuMessageSquare, LuShare2, LuBookmark } from 'react-icons/lu';
+import { LuHeart, LuMessageSquare, LuShare2, LuBookmark, LuPlus, LuX } from 'react-icons/lu';
 import ComponentComment from '@/components/(post)/comment';
 import { useState } from 'react';
 
@@ -26,7 +26,7 @@ export default function ComponentPost({
   }
 
   return (
-    <>
+    <div className='flex flex-col'>
       {
         dataPost.map((post, index) => {
           return (
@@ -77,6 +77,9 @@ export default function ComponentPost({
             )
         })
       }
-    </>
+      <div className='sticky ml-auto bottom-5 right-5 rounded-full p-3 border-slate-500 border-2 animate-bounce bg-sky-500'>
+        <LuPlus className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuPlus>
+      </div>
+    </div>
   )
 }
