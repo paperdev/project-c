@@ -1,8 +1,10 @@
 'use client';
 
 import { iPost } from '@/shared/interface/post';
-import { LuHeart, LuMessageSquare, LuShare2, LuBookmark, LuPlus, LuX } from 'react-icons/lu';
+import { LuHeart, LuMessageSquare, LuShare2, LuBookmark } from 'react-icons/lu';
 import ComponentComment from '@/components/(post)/comment';
+import ComponentPostInput from '@/components/(post)/postInput';
+import ComponentPostImage from '@/components/(post)/postImage';
 import { useState } from 'react';
 
 export default function ComponentPost({
@@ -22,7 +24,6 @@ export default function ComponentPost({
     const commentsElement = event.currentTarget.parentElement.parentElement.parentElement.nextElementSibling;
     const isHidden = commentsElement.classList.contains('hidden');
     isHidden ? commentsElement.classList.remove('hidden') : commentsElement.classList.add('hidden');
-
   }
 
   return (
@@ -44,12 +45,7 @@ export default function ComponentPost({
               </div>
               
               <div>
-                {
-                  post.urls.map((url, index) => {
-                    // TODO: multi view
-                    return 0 === index && <img key={index} className='w-full cursor-pointer' src={url}/>
-                  })
-                }
+                <ComponentPostImage imgUrls={post.urls}></ComponentPostImage>
               </div>
               
               <div className='flex p-4 justify-between'>
@@ -77,9 +73,7 @@ export default function ComponentPost({
             )
         })
       }
-      <div className='sticky ml-auto bottom-5 right-5 rounded-full p-3 border-slate-500 border-2 animate-bounce bg-sky-500'>
-        <LuPlus className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuPlus>
-      </div>
+      <ComponentPostInput />
     </div>
   )
 }

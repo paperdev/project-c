@@ -8,6 +8,7 @@ async function getPostList() {
       headers: {
         'Content-type': 'application/json;',
       },
+      cache: 'no-cache'
     }
   );
 
@@ -20,10 +21,11 @@ async function getPostList() {
 
 export default async function Page() {
   const dataPost: iPost[] = await getPostList();
+  const reversedDataPost = dataPost.reverse();
 
   return (
     <>
-      <ComponentPost dataPost={dataPost} />
+      <ComponentPost dataPost={reversedDataPost} />
     </>
   )
 }
