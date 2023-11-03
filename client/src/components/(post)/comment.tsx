@@ -1,6 +1,9 @@
 'use client';
 
+import { useRef } from 'react';
 import { LuUser2 } from 'react-icons/lu';
+import { useRouter } from 'next/navigation';
+
 
 export default function ComponentComment({
   dataComments
@@ -10,12 +13,73 @@ export default function ComponentComment({
   const iconWeight = 'w-6';
   const iconHeight = 'h-6';
 
+  const inputCommentRef = useRef(null);
+  const router = useRouter();
+
   if (!dataComments) {
     return;
   }
 
+  const sendComment = async (div: HTMLElement, comment: string) => {
+    const postId = div.parentElement.parentElement.parentElement.getAttribute('data-postid');
+
+    await fetch(process.env.POST_URL + '/' + postId, 
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(
+          {
+            comment: comment,
+          }
+        )
+      }
+    );
+
+    router.refresh();
+  }
+
+  const resetInputComment = () => {
+    inputCommentRef.current.value = '';
+  }
+
+  const checkKeyDown = async (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.code === 'Enter') {
+      if (!inputCommentRef.current.value) {
+        return;
+      }
+
+      sendComment(inputCommentRef.current, inputCommentRef.current.value);
+
+      resetInputComment();
+    }
+  }
+
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (!inputCommentRef.current.value) {
+      return;
+    }
+    sendComment(inputCommentRef.current, inputCommentRef.current.value);
+
+    resetInputComment();
+  }
+  
+
   return (
     <>
+      <div className='paper-join w-full px-2 pb-6 bg-base-100'>
+        <input ref={inputCommentRef} type='text' placeholder='Leave a comment' 
+          className='paper-input paper-input-bordered paper-join-item w-full' 
+          onKeyDown={(event: React.KeyboardEvent) => {checkKeyDown(event);}} >
+        </input>
+
+        <button type='button' className='paper-btn paper-btn-outline paper-join-item capitalize' 
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {onClick(event);}}>
+          Reply
+        </button>
+      </div>
+
       <ol className='relative border-l border-gray-200 dark:border-gray-700'>
         {
           dataComments.map((comment, index) => {
