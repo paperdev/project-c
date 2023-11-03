@@ -6,6 +6,7 @@ import ComponentComment from '@/components/(post)/comment';
 import ComponentPostInput from '@/components/(post)/postInput';
 import ComponentPostImage from '@/components/(post)/postImage';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function ComponentPost({
   dataPost
@@ -17,8 +18,9 @@ export default function ComponentPost({
   const maxNumber = 100;
 
   const [dataComments, setDataComments] = useState([]);
+  const router = useRouter();
 
-  const onClick = (event: React.MouseEvent, comments: string[]) => {
+  const onClickComment = (event: React.MouseEvent, comments: string[]) => {
     setDataComments(comments);
 
     const commentsElement = event.currentTarget.parentElement.parentElement.parentElement.nextElementSibling;
@@ -26,12 +28,32 @@ export default function ComponentPost({
     isHidden ? commentsElement.classList.remove('hidden') : commentsElement.classList.add('hidden');
   }
 
+  const onClickLike = async (event: React.MouseEvent) => {
+    event.currentTarget.classList.add('animate-fade');
+    const postId = event.currentTarget.parentElement.parentElement.parentElement.parentElement.getAttribute('data-postid');
+    await fetch(process.env.POST_URL + '/' + postId, 
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(
+          {
+            likeCount: 1,
+          }
+        )
+      }
+    );
+
+    router.refresh();
+  }
+
   return (
     <div className='flex flex-col'>
       {
         dataPost.map((post, index) => {
           return (
-            <div key={index} className='mx-auto rounded-xl shadow-lg transform transition duration-500 py-2'>
+            <div key={index} data-postid={post.id} className='mx-auto rounded-xl shadow-lg transform transition duration-500 py-2'>
               <div>
                 <div className='text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100'>{post.title}</div>
                 <span className='text-xs mt-2 ml-6 dark:text-gray-400'>{post.time}</span>
@@ -56,11 +78,11 @@ export default function ComponentPost({
                 
                 <div className='flex space-x-2'>
                   <div className='flex space-x-1 items-center'>
-                    <LuMessageSquare onClick={(event: React.MouseEvent) => {onClick(event, post.comments);}} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuMessageSquare>
+                    <LuMessageSquare onClick={(event: React.MouseEvent) => {onClickComment(event, post.comments);}} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuMessageSquare>
                     <div>{(maxNumber < post.comments.length ? `${maxNumber}+` : `${post.comments.length}`) }</div>
                   </div>
                   <div className='flex space-x-1 items-center'>
-                    <LuHeart className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer fill-red-500`}></LuHeart>
+                    <LuHeart onClick={(event: React.MouseEvent) => {onClickLike(event);}} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer fill-red-500`}></LuHeart>
                     <div>{(maxNumber < post.likeCount ? `${maxNumber}+` : `${post.likeCount}`)}</div>
                   </div>
                 </div>

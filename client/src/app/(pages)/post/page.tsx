@@ -21,6 +21,7 @@ async function getPostList() {
 
 export default async function Page() {
   const dataPost: iPost[] = await getPostList();
+  dataPost.map((post) => {post.comments.reverse();})
   const reversedDataPost = dataPost.reverse();
 
   return (
