@@ -18,7 +18,6 @@ export default function ComponentPost({
   const maxNumber = 100;
 
   const [dataComments, setDataComments] = useState([]);
-  const [likeEventTriggered, setLikeEventTriggered] = useState(false);
   const router = useRouter();
 
   const onClickComment = (event: React.MouseEvent, comments: string[]) => {
@@ -34,6 +33,7 @@ export default function ComponentPost({
       return;
     }
 
+    const divLikeButtonAni = event.currentTarget.parentElement.getElementsByClassName('likeButtonAni')[0];
     const postId = event.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute('data-postid');
     await fetch(process.env.POST_URL + '/' + postId, 
       {
@@ -49,16 +49,12 @@ export default function ComponentPost({
       }
     );    
 
-    const divLikeButtonAni = document.getElementById('likeButtonAni');
     divLikeButtonAni.classList.remove('invisible');
     divLikeButtonAni.classList.add('animate__animated', 'animate__fadeOutUp');
-    if (!likeEventTriggered) { 
-      divLikeButtonAni.addEventListener('animationend', () => {
-        divLikeButtonAni.classList.add('invisible');
-        divLikeButtonAni.classList.remove('animate__animated', 'animate__fadeOutUp');
-          setLikeEventTriggered(true);
-      });
-    }
+    divLikeButtonAni.addEventListener('animationend', () => {
+      divLikeButtonAni.classList.add('invisible');
+      divLikeButtonAni.classList.remove('animate__animated', 'animate__fadeOutUp');
+    });
     
     router.refresh();
   }
@@ -103,7 +99,7 @@ export default function ComponentPost({
                       <LuHeart onClick={(event: React.MouseEvent) => {onClickLike(event);}} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer fill-red-500`}></LuHeart>
                       <div>{(maxNumber < post.likeCount ? `${maxNumber}+` : `${post.likeCount}`)}</div>
 
-                      <div id='likeButtonAni' className='flex absolute invisible'>
+                      <div className='flex absolute invisible likeButtonAni'>
                         <LuHeart className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer fill-red-500`}></LuHeart>
                         <div>+1</div>
                       </div>
