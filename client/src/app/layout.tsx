@@ -1,4 +1,5 @@
 import '@/css/globals.css';
+import 'animate.css';
 import TemplateHome from '@/components/template/home';
 import { Analytics } from '@vercel/analytics/react';
 

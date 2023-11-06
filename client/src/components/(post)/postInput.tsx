@@ -53,7 +53,7 @@ export default function ComponentPostInput({
 
   return (
     <>
-      <div className='paper-btn paper-btn-circle sticky ml-auto bottom-5 right-5 animate-bounce' onClick={(event: React.MouseEvent) => { onClickShowDialog(event); }}>
+      <div className='paper-btn paper-btn-circle sticky ml-auto bottom-5 right-5 animate-pulse' onClick={(event: React.MouseEvent) => { onClickShowDialog(event); }}>
         <LuPlus className={`${iconHeight} ${iconWeight} cursor-pointer`}></LuPlus>
       </div>
 
