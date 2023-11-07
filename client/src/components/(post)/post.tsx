@@ -26,6 +26,11 @@ export default function ComponentPost({
     const commentsElement = event.currentTarget.parentElement.parentElement.parentElement.nextElementSibling;
     const isHidden = commentsElement.classList.contains('hidden');
     isHidden ? commentsElement.classList.remove('hidden') : commentsElement.classList.add('hidden');
+
+    const commentInputElement = commentsElement?.children[0]?.children[0] as HTMLInputElement;
+    if (commentInputElement) {
+      commentInputElement.focus();
+    }
   }
 
   const onClickLike = async (event: React.MouseEvent) => {
