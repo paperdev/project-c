@@ -1,7 +1,9 @@
 import '@/css/globals.css';
 import 'animate.css';
 import TemplateHome from '@/components/template/home';
+import { Providers } from "./providers";
 import { Analytics } from '@vercel/analytics/react';
+
 
 export default function RootLayout({
   children,
@@ -11,13 +13,16 @@ export default function RootLayout({
   return (
     <html lang='en' className='dark' >
       <body>
-        <TemplateHome>
-          {children}
-        </TemplateHome>
+        <Providers>
+          <TemplateHome>
+            {children}
+          </TemplateHome>
+        </Providers>
+
         {
+          // vercel analytics
           process.env.SERVER_TYPE === 'prod' && <Analytics/>
         }
-        
       </body>
     </html>
   );

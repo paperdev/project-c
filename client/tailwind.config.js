@@ -9,6 +9,8 @@ module.exports = {
  
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    // nextui
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   i18n: {
     locales: ["en-US"],
@@ -20,7 +22,9 @@ module.exports = {
   },
   plugins: [
     require('daisyui'),
-    HideScroll
+    HideScroll,
+    // nextui
+    require("@nextui-org/react")
   ],
   daisyui: {
     themes: ['light', 'dark'], // true: all themes | false: only light + dark | array: specific themes like this ['light', 'dark', 'cupcake']
