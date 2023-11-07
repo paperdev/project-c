@@ -26,11 +26,20 @@ export default function ComponentPost({
     const commentsElement = event.currentTarget.parentElement.parentElement.parentElement.nextElementSibling;
     const isHidden = commentsElement.classList.contains('hidden');
     isHidden ? commentsElement.classList.remove('hidden') : commentsElement.classList.add('hidden');
+
+    const commentInputElement = commentsElement?.children[0]?.children[0] as HTMLInputElement;
+    if (commentInputElement) {
+      commentInputElement.focus();
+    }
   }
 
   const onClickLike = async (event: React.MouseEvent) => {
-    event.currentTarget.classList.add('animate-fade');
-    const postId = event.currentTarget.parentElement.parentElement.parentElement.parentElement.getAttribute('data-postid');
+    if (!event.currentTarget) {
+      return;
+    }
+
+    const divLikeButtonAni = event.currentTarget.parentElement.getElementsByClassName('likeButtonAni')[0];
+    const postId = event.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute('data-postid');
     await fetch(process.env.POST_URL + '/' + postId, 
       {
         method: 'PUT',
@@ -43,8 +52,15 @@ export default function ComponentPost({
           }
         )
       }
-    );
+    );    
 
+    divLikeButtonAni.classList.remove('invisible');
+    divLikeButtonAni.classList.add('animate__animated', 'animate__fadeOutUp');
+    divLikeButtonAni.addEventListener('animationend', () => {
+      divLikeButtonAni.classList.add('invisible');
+      divLikeButtonAni.classList.remove('animate__animated', 'animate__fadeOutUp');
+    });
+    
     router.refresh();
   }
 
@@ -77,14 +93,24 @@ export default function ComponentPost({
                 </div>
                 
                 <div className='flex space-x-2'>
+
                   <div className='flex space-x-1 items-center'>
                     <LuMessageSquare onClick={(event: React.MouseEvent) => {onClickComment(event, post.comments);}} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuMessageSquare>
                     <div>{(maxNumber < post.comments.length ? `${maxNumber}+` : `${post.comments.length}`) }</div>
                   </div>
+
                   <div className='flex space-x-1 items-center'>
-                    <LuHeart onClick={(event: React.MouseEvent) => {onClickLike(event);}} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer fill-red-500`}></LuHeart>
-                    <div>{(maxNumber < post.likeCount ? `${maxNumber}+` : `${post.likeCount}`)}</div>
+                    <div className='flex relative'>
+                      <LuHeart onClick={(event: React.MouseEvent) => {onClickLike(event);}} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer fill-red-500`}></LuHeart>
+                      <div>{(maxNumber < post.likeCount ? `${maxNumber}+` : `${post.likeCount}`)}</div>
+
+                      <div className='flex absolute invisible likeButtonAni'>
+                        <LuHeart className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer fill-red-500`}></LuHeart>
+                        <div>+1</div>
+                      </div>
+                    </div>
                   </div>
+
                 </div>
               </div>
 
