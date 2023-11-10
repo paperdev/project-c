@@ -21,11 +21,16 @@ export default function ComponentPost({
   const router = useRouter();
 
   const onClickComment = (event: React.MouseEvent, comments: string[]) => {
-    setDataComments(comments);
-
+    
     const commentsElement = event.currentTarget.parentElement.parentElement.parentElement.nextElementSibling;
     const isHidden = commentsElement.classList.contains('hidden');
-    isHidden ? commentsElement.classList.remove('hidden') : commentsElement.classList.add('hidden');
+    if (isHidden) {
+      commentsElement.classList.remove('hidden');
+      setDataComments(comments);
+    }
+    else {
+      commentsElement.classList.add('hidden');
+    }
 
     const commentInputElement = commentsElement?.children[0]?.children[0] as HTMLInputElement;
     if (commentInputElement) {

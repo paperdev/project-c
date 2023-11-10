@@ -2,8 +2,8 @@
 
 import { useRef } from 'react';
 import { LuUser2 } from 'react-icons/lu';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-
 
 export default function ComponentComment({
   dataComments
@@ -14,11 +14,12 @@ export default function ComponentComment({
   const iconHeight = 'h-6';
 
   const inputCommentRef = useRef(null);
+  const [recentComments, setRecentComments] = useState(dataComments);
   const router = useRouter();
 
-  if (!dataComments) {
-    return;
-  }
+  useEffect(() => {
+    setRecentComments(dataComments);
+  }, [dataComments]);
 
   const sendComment = async (div: HTMLElement, comment: string) => {
     const postId = div.parentElement.parentElement.parentElement.getAttribute('data-postid');
@@ -37,6 +38,7 @@ export default function ComponentComment({
       }
     );
 
+    setRecentComments([comment, ...dataComments]);
     router.refresh();
   }
 
@@ -82,9 +84,9 @@ export default function ComponentComment({
 
       <ol className='relative border-l border-dotted border-gray-200 dark:border-gray-700'>
         {
-          dataComments.map((comment, index) => {
+          recentComments.map((comment, index) => {
             return (
-              <li key={index} className={`${(index !== dataComments.length - 1) ? 'mb-3' : ''} ml-6`}>
+              <li key={index} className={`${(index !== recentComments.length - 1) ? 'mb-3' : ''} ml-6`}>
                 <div className={`absolute flex items-center justify-center ${iconHeight} ${iconWeight} bg-blue-100 rounded-full -left-3 mt-4 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900`}>
                   <LuUser2 className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuUser2>
                 </div>
