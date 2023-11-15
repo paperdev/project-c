@@ -32,7 +32,7 @@ export default function ComponentPost({
       commentsElement.classList.add('hidden');
     }
 
-    const commentInputElement = commentsElement?.children[0]?.children[0] as HTMLInputElement;
+    const commentInputElement = commentsElement.getElementsByTagName('input')[0];
     if (commentInputElement) {
       commentInputElement.focus();
     }
@@ -120,7 +120,7 @@ export default function ComponentPost({
               </div>
 
               <div className='hidden p-6'>
-                <ComponentComment dataComments={dataComments}></ComponentComment>
+                <ComponentComment postId={post.id} dataComments={dataComments}></ComponentComment>
               </div>
             </div>
             )

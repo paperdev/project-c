@@ -1,13 +1,17 @@
 'use client';
 
+import React from 'react';
+import { Input, Button } from '@nextui-org/react';
 import { useRef } from 'react';
 import { LuUser2 } from 'react-icons/lu';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function ComponentComment({
+  postId,
   dataComments
 }: {
+  postId: number,
   dataComments: string[],
 }) {
   const iconWeight = 'w-6';
@@ -21,9 +25,7 @@ export default function ComponentComment({
     setRecentComments(dataComments);
   }, [dataComments]);
 
-  const sendComment = async (div: HTMLElement, comment: string) => {
-    const postId = div.parentElement.parentElement.parentElement.getAttribute('data-postid');
-
+  const sendComment = async (comment: string) => {
     await fetch(process.env.POST_URL + '/' + postId, 
       {
         method: 'PUT',
@@ -38,7 +40,8 @@ export default function ComponentComment({
       }
     );
 
-    setRecentComments([comment, ...dataComments]);
+    setRecentComments([comment, ...recentComments]);
+
     router.refresh();
   }
 
@@ -52,7 +55,7 @@ export default function ComponentComment({
         return;
       }
 
-      sendComment(inputCommentRef.current, inputCommentRef.current.value);
+      sendComment(inputCommentRef.current.value);
 
       resetInputComment();
     }
@@ -62,7 +65,7 @@ export default function ComponentComment({
     if (!inputCommentRef.current.value) {
       return;
     }
-    sendComment(inputCommentRef.current, inputCommentRef.current.value);
+    sendComment(inputCommentRef.current.value);
 
     resetInputComment();
   }
@@ -70,16 +73,22 @@ export default function ComponentComment({
 
   return (
     <>
-      <div className='paper-join w-full px-2 pb-6 bg-base-100'>
-        <input ref={inputCommentRef} type='text' placeholder='Leave a comment' 
-          className='paper-input paper-input-bordered paper-join-item w-full' 
-          onKeyDown={(event: React.KeyboardEvent) => {checkKeyDown(event);}} >
-        </input>
-
-        <button type='button' className='paper-btn paper-btn-outline paper-join-item capitalize' 
-          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {onClick(event);}}>
-          Reply
-        </button>
+      <div className='w-full px-2 pb-6 bg-base-100'>
+        <Input
+          type='text'
+          variant='underlined'
+          placeholder='Leave a comment'
+          className='inputCommentClass'
+          endContent={
+            <Button
+              onClick={(event: React.MouseEvent<HTMLButtonElement>) => { onClick(event); }}
+            >
+              Reply
+            </Button>
+          }
+          ref={inputCommentRef}
+          onKeyDown={(event: React.KeyboardEvent) => { checkKeyDown(event); }}
+        />
       </div>
 
       <ol className='relative border-l border-dotted border-gray-200 dark:border-gray-700'>
