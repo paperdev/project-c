@@ -5,10 +5,9 @@ import { LuHeart, LuMessageSquare, LuShare2, LuBookmark } from 'react-icons/lu';
 import ComponentComment from '@/components/(post)/comment';
 import ComponentPostInput from '@/components/(post)/postInput';
 import ComponentPostImage from '@/components/(post)/postImage';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import React from 'react';
-import { Card, CardHeader, CardBody, CardFooter, Image, Chip } from '@nextui-org/react';
+import { Card, CardHeader, CardBody, CardFooter, Chip } from '@nextui-org/react';
 
 export default function ComponentPost({
   dataPost
@@ -23,8 +22,7 @@ export default function ComponentPost({
   const router = useRouter();
 
   const onClickComment = (event: React.MouseEvent, comments: string[]) => {
-
-    const commentsElement = event.currentTarget.parentElement.parentElement.parentElement.nextElementSibling;
+    const commentsElement = event.currentTarget.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('commentListClass')[0];
     const isHidden = commentsElement.classList.contains('hidden');
     if (isHidden) {
       commentsElement.classList.remove('hidden');
@@ -46,7 +44,7 @@ export default function ComponentPost({
     }
 
     const divLikeButtonAni = event.currentTarget.parentElement.getElementsByClassName('likeButtonAni')[0];
-    const postId = event.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute('data-postid');
+    const postId = event.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute('data-postid');
     await fetch(process.env.POST_URL + '/' + postId,
       {
         method: 'PUT',
@@ -76,7 +74,7 @@ export default function ComponentPost({
       {
         dataPost.map((post, index) => {
           return (
-            <Card key={index} data-postid={post.id}>
+            <Card key={index} data-postid={post.id} isBlurred >
               
               <CardHeader>
                 <div>
@@ -96,9 +94,8 @@ export default function ComponentPost({
                 <ComponentPostImage imgUrls={post.urls}></ComponentPostImage>
               </CardBody>
 
-              {/* <CardFooter> */}
-                <div className='flex mx-4 my-2 justify-between'>
-
+              <CardFooter className="grid">
+                <div className='flex justify-between'>
                   <div className='flex space-x-4'>
                     <LuBookmark className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuBookmark>
                     <LuShare2 className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuShare2>
@@ -122,13 +119,12 @@ export default function ComponentPost({
                       </div>
                     </div>
                   </div>
-
                 </div>
 
-                <div className='hidden p-6 '>
+                <div className='hidden p-6 commentListClass'>
                   <ComponentComment postId={post.id} dataComments={dataComments}></ComponentComment>
                 </div>
-              {/* </CardFooter> */}
+              </CardFooter>
 
             </Card>
 
