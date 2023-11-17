@@ -1,9 +1,11 @@
 'use client';
 
 import React from 'react';
-import { Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, Link, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, User } from '@nextui-org/react';
+import { Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, User, Link } from '@nextui-org/react';
+import { usePathname } from 'next/navigation';
 import SubHeader from '@/components/subHeader';
 import dataProfile from '@/data/profile.json';
+import { ThemeSwitcher } from './ThemeSwitcher';
 
 // TODO:
 const pageMenuItems = [
@@ -27,13 +29,17 @@ function PageMenu({
   }: {
     pageMenuItems: string[]
   }) {
+  const currentUrl = usePathname();
+  const currentMenuName = currentUrl.charAt(1).toLocaleUpperCase() + currentUrl.slice(2);
+
   return (
     <>
       {pageMenuItems.map((item: string, index: number) => (
         <NavbarMenuItem key={`${item}-${index}`}>
           <Link
-            color='foreground'
-            className='w-full'
+            underline={currentMenuName === item ? 'always' : 'none'}
+            color={currentMenuName === item ? 'secondary' : 'foreground'}
+            className={`w-full ${currentMenuName === item ? 'font-bold' : ''}`}
             href={item.toLocaleLowerCase()}
             size='lg'
           >
@@ -70,6 +76,7 @@ export default function Header({
         </NavbarContent>
 
         <NavbarContent as='div' justify='end'>
+          <ThemeSwitcher/>
           <Dropdown placement='bottom-end'>
             <DropdownTrigger>
               <Avatar

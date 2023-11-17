@@ -1,23 +1,35 @@
 'use client';
 
-import {useTheme} from 'next-themes';
-import { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
+import React, { useEffect, useState } from 'react';
+import { Switch } from '@nextui-org/react';
+import { LuSun, LuMoon } from 'react-icons/lu';
 
-export function ThemeSwitcher() {
+export function ThemeSwitcher(props: any) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [isSelected, setIsSelected] = useState(theme === 'dark' ? true : false);
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.target.checked ? setTheme('dark') : setTheme('light');
+  }
 
   useEffect(() => {
     setMounted(true);
   }, [])
 
-  if(!mounted) return null;
+  if (!mounted) return null;
 
   return (
-    <div>
-      The current theme is: {theme}
-      <button onClick={() => setTheme('light')}>Light Mode</button>
-      <button onClick={() => setTheme('dark')}>Dark Mode</button>
-    </div>
+    <Switch
+      isSelected={isSelected}
+      onValueChange={setIsSelected}
+      onChange={(event: React.ChangeEvent<HTMLInputElement>) => { onChange(event); }}
+      size="md"
+      color="primary"
+      startContent={<LuSun />}
+      endContent={<LuMoon />}
+    >
+    </Switch>
   )
 };

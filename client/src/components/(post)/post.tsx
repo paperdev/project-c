@@ -74,7 +74,7 @@ export default function ComponentPost({
       {
         dataPost.map((post, index) => {
           return (
-            <Card key={index} data-postid={post.id} isBlurred >
+            <Card key={index} data-postid={post.id} isBlurred shadow='none' >
               
               <CardHeader>
                 <div>

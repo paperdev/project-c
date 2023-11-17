@@ -93,8 +93,8 @@ export default function ComponentComment({
           recentComments.map((comment, index) => {
             return (
               <li key={index} className={`${(index !== recentComments.length - 1) ? 'mb-3' : ''} ml-6`}>
-                <div className={`absolute flex items-center justify-center ${iconHeight} ${iconWeight} bg-blue-100 rounded-full -left-3 mt-4 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900`}>
-                  <Avatar showFallback src='TODO:' className={`${iconHeight} ${iconWeight} cursor-pointer`}></Avatar>
+                <div className={`absolute flex items-center justify-center ${iconHeight} ${iconWeight} -left-3 mt-4`}>
+                  <Avatar showFallback src='' className={`${iconHeight} ${iconWeight} cursor-pointer`}></Avatar>
                 </div>
 
                 <Input
