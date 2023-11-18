@@ -23,7 +23,7 @@ export default function ComponentComment({
   }, [dataComments]);
 
   const sendComment = async (comment: string) => {
-    await fetch(process.env.POST_URL + '/' + postId, 
+    await fetch(process.env.POST_URL + '/' + postId,
       {
         method: 'PUT',
         headers: {
@@ -52,21 +52,20 @@ export default function ComponentComment({
         return;
       }
 
-      sendComment(inputCommentRef.current.value);
+      await sendComment(inputCommentRef.current.value);
 
       resetInputComment();
     }
   }
 
-  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onClick = async (event: React.MouseEvent<HTMLButtonElement>) => {
     if (!inputCommentRef.current.value) {
       return;
     }
-    sendComment(inputCommentRef.current.value);
+    await sendComment(inputCommentRef.current.value);
 
     resetInputComment();
   }
-  
 
   return (
     <>
@@ -75,7 +74,6 @@ export default function ComponentComment({
           type='text'
           variant='underlined'
           placeholder='Leave a comment'
-          className='inputCommentClass'
           endContent={
             <Button
               onClick={(event: React.MouseEvent<HTMLButtonElement>) => { onClick(event); }}
@@ -107,7 +105,7 @@ export default function ComponentComment({
                   }
                 />
               </li>
-              )
+            )
           })
         }
       </ol>
