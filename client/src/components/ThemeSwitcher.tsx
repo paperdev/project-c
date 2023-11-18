@@ -10,7 +10,7 @@ export function ThemeSwitcher(props: any) {
   const { theme, setTheme } = useTheme();
   const [isSelected, setIsSelected] = useState(theme === 'dark' ? true : false);
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: React.ChangeEvent<any>) => {
     event.target.checked ? setTheme('dark') : setTheme('light');
   }
 
@@ -24,7 +24,7 @@ export function ThemeSwitcher(props: any) {
     <Switch
       isSelected={isSelected}
       onValueChange={setIsSelected}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) => { onChange(event); }}
+      onChange={(event: React.ChangeEvent<any>) => { onChange(event); }}
       size="md"
       color="primary"
       startContent={<LuSun />}
