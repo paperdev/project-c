@@ -1,43 +1,49 @@
 'use client';
 
+import React from 'react';
+import {Card, CardBody, Image} from '@nextui-org/react';
+
 export default function ComponentPostImage({
   imgUrls
 }: {
   imgUrls: string[]
 }) {
+  const onPress = () => {}
+  const fallbackSrc = 'https://via.placeholder.com/672x480';
+
   return (
     <>
       {
-        imgUrls.map((url, index) => {
-          // TODO: multi view
-          return 0 === index && <img key={index} className='w-full cursor-pointer' src={url}/>
-        })
+        1 === imgUrls.length
+          ?
+          <>
+            <Card shadow='none' isPressable onPress={onPress}>
+              <CardBody className='overflow-visible p-0'>
+                <Image
+                  radius='md'
+                  src={imgUrls[0]}
+                  fallbackSrc={fallbackSrc}
+                />
+              </CardBody>
+            </Card>
+          </>
+          :
+          <>
+            <div className='gap-0.5 grid grid-cols-1 sm:grid-cols-3'>
+              {imgUrls.map((url, index) => (
+                <Card shadow='none' key={index} isPressable onPress={onPress}>
+                  <CardBody className='overflow-visible p-0'>
+                    <Image
+                      radius='md'
+                      src={url}
+                      fallbackSrc={fallbackSrc}
+                    />
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+          </>
       }
     </>
   )
-}
-
-const DefaultImage = () => {
-  return (
-    <div className="flex items-center justify-center w-full h-48 bg-gray-300 rounded sm:w-96 dark:bg-gray-700">
-      <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-        <path d="M18 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm4.376 10.481A1 1 0 0 1 16 15H4a1 1 0 0 1-.895-1.447l3.5-7A1 1 0 0 1 7.468 6a.965.965 0 0 1 .9.5l2.775 4.757 1.546-1.887a1 1 0 0 1 1.618.1l2.541 4a1 1 0 0 1 .028 1.011Z" />
-      </svg>
-    </div>
-  )
-}
-
-const checkImage = async (url: string) => {
-  try {
-    const res = await fetch(url, { method: 'HEAD' });
-
-    if (res.ok) {
-      return Promise.resolve(true);
-    } else {
-      return Promise.resolve(false);
-    }
-  }
-  catch(error: any) {
-    return Promise.resolve(false);
-  }
 }

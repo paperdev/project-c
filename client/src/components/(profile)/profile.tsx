@@ -1,10 +1,13 @@
 'use client';
 
-import { iProfile } from '@/shared/interface/profile';
+import React from 'react';
+import { Avatar } from '@nextui-org/react';
 import Link from 'next/link';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { LuGithub, LuMail, LuLinkedin } from 'react-icons/lu';
+import { iProfile } from '@/shared/interface/profile';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 let isToast = false;
 const delayTime = 2000;
@@ -32,13 +35,9 @@ export default async function ComponentProfile({
 }) {
   return (
     <div className='flex flex-col justify-center items-center text-center sm:flex sm:flex-row sm:justify-center sm:items-center sm:text-left sm:py-4 mx-auto rounded-xl shadow-md'>
-      <div className='paper-avatar '>
-        <div className='w-24 rounded-full'>
-          <img src={dataProfile.avatar}/>
-        </div>
-      </div>
-      
-      <div className='paper-join sm:pl-4'>
+      <Avatar src={dataProfile.avatar} className='w-24 h-24'></Avatar>
+
+      <div className='sm:pl-4'>
         <div className='py-2'>
           <div className='text-primary text-lg font-semibold'>
             {dataProfile.name}
@@ -47,20 +46,20 @@ export default async function ComponentProfile({
           <div className='font-medium'>
             {dataProfile.jobTitle}
           </div>
-          
-          <div className='paper-join text-accent pt-2'>
-            <Link className='px-1' href={dataProfile.github} target='_blank'>
-                <LuGithub className='w-6 h-6'></LuGithub>
+
+          <div className='flex gap-2 mt-2 justify-center sm:justify-start'>
+            <Link href={dataProfile.github} target='_blank'>
+              <LuGithub className='w-6 h-6'></LuGithub>
             </Link>
-            <Link className='px-1' href={dataProfile.linkedin} target='_blank'>
-                <LuLinkedin className='w-6 h-6'></LuLinkedin>
+            <Link href={dataProfile.linkedin} target='_blank'>
+              <LuLinkedin className='w-6 h-6'></LuLinkedin>
             </Link>
-            <button className='px-1 paper-tooltip' data-tip='click to copy' onClick={() => {copyText(dataProfile.email)}}>
+            <button data-tip='click to copy' onClick={() => { copyText(dataProfile.email) }}>
               <LuMail className='w-6 h-6'></LuMail>
             </button>
           </div>
 
-          <ToastContainer/>
+          <ToastContainer />
         </div>
       </div>
     </div>

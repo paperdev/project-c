@@ -1,16 +1,20 @@
+'use client';
+
 import { LuCodesandbox, LuSmartphone } from 'react-icons/lu';
 import { iChatData } from '@/shared/interface/chat';
+import React from 'react';
+import { Input } from '@nextui-org/react';
 
 export default function ComponentChatData({
   chatData
 }: {
   chatData: iChatData,
 }) {
-  const chatPosition = chatData.isSender ? 'paper-chat-end' : 'paper-chat-start';
+  const chatPosition = chatData.isSender ? 'justify-end' : 'justify-start';
   
   return(
-    <div className={`paper-chat ${chatPosition}`}>
-      <div className='paper-chat-image avatar'>
+    <div className={`flex ${chatPosition}`}>
+      <div className='mt-7'>
           {
             chatData.avatar 
             ? (
@@ -26,17 +30,15 @@ export default function ComponentChatData({
           }
       </div>
 
-      <div className='paper-chat-header'>
-        {chatData.name}
-        <time className='ml-2 text-xs opacity-50'>
-          {chatData.time}
-        </time>
+      <div className='ml-1'>
+        <Input
+          label={chatData.name}
+          labelPlacement='outside'
+          isReadOnly
+          value={chatData.text}
+          description={chatData.time}
+        />
       </div>
-
-      <div className='paper-chat-bubble'>
-        {chatData.text}
-      </div>
-
     </div>
   )
 }

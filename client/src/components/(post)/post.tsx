@@ -5,8 +5,9 @@ import { LuHeart, LuMessageSquare, LuShare2, LuBookmark } from 'react-icons/lu';
 import ComponentComment from '@/components/(post)/comment';
 import ComponentPostInput from '@/components/(post)/postInput';
 import ComponentPostImage from '@/components/(post)/postImage';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Card, CardHeader, CardBody, CardFooter, Chip } from '@nextui-org/react';
 
 export default function ComponentPost({
   dataPost
@@ -21,13 +22,17 @@ export default function ComponentPost({
   const router = useRouter();
 
   const onClickComment = (event: React.MouseEvent, comments: string[]) => {
-    setDataComments(comments);
-
-    const commentsElement = event.currentTarget.parentElement.parentElement.parentElement.nextElementSibling;
+    const commentsElement = event.currentTarget.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('commentListClass')[0];
     const isHidden = commentsElement.classList.contains('hidden');
-    isHidden ? commentsElement.classList.remove('hidden') : commentsElement.classList.add('hidden');
+    if (isHidden) {
+      commentsElement.classList.remove('hidden');
+      setDataComments(comments);
+    }
+    else {
+      commentsElement.classList.add('hidden');
+    }
 
-    const commentInputElement = commentsElement?.children[0]?.children[0] as HTMLInputElement;
+    const commentInputElement = commentsElement.getElementsByTagName('input')[0];
     if (commentInputElement) {
       commentInputElement.focus();
     }
@@ -39,8 +44,8 @@ export default function ComponentPost({
     }
 
     const divLikeButtonAni = event.currentTarget.parentElement.getElementsByClassName('likeButtonAni')[0];
-    const postId = event.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute('data-postid');
-    await fetch(process.env.POST_URL + '/' + postId, 
+    const postId = event.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute('data-postid');
+    await fetch(process.env.POST_URL + '/' + postId,
       {
         method: 'PUT',
         headers: {
@@ -52,7 +57,7 @@ export default function ComponentPost({
           }
         )
       }
-    );    
+    );
 
     divLikeButtonAni.classList.remove('invisible');
     divLikeButtonAni.classList.add('animate__animated', 'animate__fadeOutUp');
@@ -60,65 +65,70 @@ export default function ComponentPost({
       divLikeButtonAni.classList.add('invisible');
       divLikeButtonAni.classList.remove('animate__animated', 'animate__fadeOutUp');
     });
-    
+
     router.refresh();
   }
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col gap-1 pt-0.5'>
       {
         dataPost.map((post, index) => {
           return (
-            <div key={index} data-postid={post.id} className='mx-auto rounded-xl shadow-lg transform transition duration-500 py-2'>
-              <div>
-                <div className='text-2xl mt-2 ml-4 font-bold text-gray-800 cursor-pointer hover:text-gray-900 transition duration-100'>{post.title}</div>
-                <span className='text-xs mt-2 ml-6 dark:text-gray-400'>{post.time}</span>
-                <div className='flex'>
-                {
-                  post.tags.map((tag, index) => {
-                    return <div key={index} className='ml-4 mt-1 mb-2 text-gray-700 hover:underline cursor-pointer'>{`#${tag}`}</div>
-                  })
-                }
-              </div> 
-              </div>
+            <Card key={index} data-postid={post.id} isBlurred shadow='none' >
               
-              <div>
-                <ComponentPostImage imgUrls={post.urls}></ComponentPostImage>
-              </div>
-              
-              <div className='flex p-4 justify-between'>
-                <div className='flex items-center space-x-4'>
-                  <LuBookmark className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuBookmark>
-                  <LuShare2 className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuShare2>
+              <CardHeader>
+                <div>
+                  <div className='text-2xl font-bold text-primary-500'>{post.title}</div>
+                  <span className='text-xs ml-2 text-default-500'>{post.time}</span>
+                  <div className='flex mt-2 gap-1'>
+                    {
+                      post.tags.map((tag, index) => {
+                        return <Chip key={index} color='secondary' variant='flat' radius='sm' className='cursor-pointer'>{`#${tag}`}</Chip>
+                      })
+                    }
+                  </div>
                 </div>
-                
-                <div className='flex space-x-2'>
+              </CardHeader>
 
-                  <div className='flex space-x-1 items-center'>
-                    <LuMessageSquare onClick={(event: React.MouseEvent) => {onClickComment(event, post.comments);}} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuMessageSquare>
-                    <div>{(maxNumber < post.comments.length ? `${maxNumber}+` : `${post.comments.length}`) }</div>
+              <CardBody>
+                <ComponentPostImage imgUrls={post.urls}></ComponentPostImage>
+              </CardBody>
+
+              <CardFooter className="grid">
+                <div className='flex justify-between'>
+                  <div className='flex space-x-4'>
+                    <LuBookmark className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuBookmark>
+                    <LuShare2 className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuShare2>
                   </div>
 
-                  <div className='flex space-x-1 items-center'>
-                    <div className='flex relative'>
-                      <LuHeart onClick={(event: React.MouseEvent) => {onClickLike(event);}} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer fill-red-500`}></LuHeart>
-                      <div>{(maxNumber < post.likeCount ? `${maxNumber}+` : `${post.likeCount}`)}</div>
+                  <div className='flex space-x-4'>
+                    <div className='flex space-x-1 items-center'>
+                      <LuMessageSquare onClick={(event: React.MouseEvent) => { onClickComment(event, post.comments); }} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuMessageSquare>
+                      <div>{(maxNumber < post.comments.length ? `${maxNumber}+` : `${post.comments.length}`)}</div>
+                    </div>
 
-                      <div className='flex absolute invisible likeButtonAni'>
-                        <LuHeart className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer fill-red-500`}></LuHeart>
-                        <div>+1</div>
+                    <div className='flex space-x-1 items-center'>
+                      <div className='flex relative'>
+                        <LuHeart onClick={(event: React.MouseEvent) => { onClickLike(event); }} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer fill-red-500`}></LuHeart>
+                        <div>{(maxNumber < post.likeCount ? `${maxNumber}+` : `${post.likeCount}`)}</div>
+
+                        <div className='flex absolute invisible likeButtonAni'>
+                          <LuHeart className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer fill-red-500`}></LuHeart>
+                          <div>+1</div>
+                        </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
-              </div>
 
-              <div className='hidden p-6'>
-                <ComponentComment dataComments={dataComments}></ComponentComment>
-              </div>
-            </div>
-            )
+                <div className='hidden p-6 commentListClass'>
+                  <ComponentComment postId={post.id} dataComments={dataComments}></ComponentComment>
+                </div>
+              </CardFooter>
+
+            </Card>
+
+          )
         })
       }
       <ComponentPostInput />
