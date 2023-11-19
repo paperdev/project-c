@@ -23,6 +23,7 @@ export class PostService {
 
     // TODO: 
     const resPostData: iPost = {
+      userId: postData.userId,
       id: postData.id,
       title: postData.title,
       time: localTimeFormat,

@@ -1,6 +1,6 @@
 'use client';
 
-import { iPost } from '@/shared/interface/post';
+import { iPost, iComment } from '@/shared/interface/post';
 import { LuHeart, LuMessageSquare, LuShare2, LuBookmark } from 'react-icons/lu';
 import ComponentComment from '@/components/(post)/comment';
 import ComponentPostInput from '@/components/(post)/postInput';
@@ -21,7 +21,7 @@ export default function ComponentPost({
   const [dataComments, setDataComments] = useState([]);
   const router = useRouter();
 
-  const onClickComment = (event: React.MouseEvent, comments: string[]) => {
+  const onClickComment = (event: React.MouseEvent, comments: iComment[]) => {
     const commentsElement = event.currentTarget.parentElement.parentElement.parentElement.parentElement.getElementsByClassName('commentListClass')[0];
     const isHidden = commentsElement.classList.contains('hidden');
     if (isHidden) {

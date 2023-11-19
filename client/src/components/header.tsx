@@ -4,7 +4,7 @@ import React from 'react';
 import { Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, User, Link } from '@nextui-org/react';
 import { usePathname } from 'next/navigation';
 import SubHeader from '@/components/subHeader';
-import dataProfile from '@/data/profile.json';
+import dataProfile from '@/shared/data/json/profile.json';
 import { ThemeSwitcher } from './ThemeSwitcher';
 
 // TODO:
@@ -85,7 +85,7 @@ export default function Header({
                 className='transition-transform'
                 color='secondary'
                 size='sm'
-                src={dataProfile.avatar}
+                src={dataProfile.profile.avatar}
               />
             </DropdownTrigger>
             <DropdownMenu aria-label='Profile' variant='flat'>
@@ -96,10 +96,10 @@ export default function Header({
                       ? 
                         <>
                           <User
-                            name={dataProfile.name}
-                            description={dataProfile.email}
+                            name={dataProfile.profile.name}
+                            description={dataProfile.profile.email}
                             avatarProps={{
-                              src: dataProfile.avatar,
+                              src: dataProfile.profile.avatar,
                               size: 'sm',
                             }}
                           />

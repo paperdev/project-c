@@ -1,5 +1,6 @@
 [
   {
+    "userId": 1,
     "id": 1,
     "title": "A wonderful day, isn't it?",
     "time": "2022-1-1",
@@ -14,14 +15,50 @@
     ],
     "likeCount": 123,
     "comments": [
-      "good",
-      "perfect",
-      "awesome",
-      "amazing",
-      "insane"
+      {
+        "postId": 1,
+        "userId": 1,
+        "id": 1,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-1-1",
+        "text": "good"
+      },
+      {
+        "postId": 1,
+        "userId": 1,
+        "id": 2,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-2-1",
+        "text": "perfect"
+      },
+      {
+        "postId": 1,
+        "userId": 1,
+        "id": 3,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-3-1",
+        "text": "awesome"
+      },
+      {
+        "postId": 1,
+        "userId": 1,
+        "id": 4,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-4-1",
+        "text": "amazing"
+      },
+      {
+        "postId": 1,
+        "userId": 1,
+        "id": 5,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-5-1",
+        "text": "insane"
+      }
     ]
   },
   {
+    "userId": 1,
     "id": 2,
     "title": "A wonderful day, isn't it?",
     "time": "2022-1-1",
@@ -36,14 +73,50 @@
     ],
     "likeCount": 110,
     "comments": [
-      "good",
-      "perfect",
-      "awesome",
-      "amazing",
-      "insane"
+      {
+        "postId": 2,
+        "userId": 1,
+        "id": 1,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-1-1",
+        "text": "good"
+      },
+      {
+        "postId": 2,
+        "userId": 1,
+        "id": 2,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-2-1",
+        "text": "perfect"
+      },
+      {
+        "postId": 2,
+        "userId": 1,
+        "id": 3,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-3-1",
+        "text": "awesome"
+      },
+      {
+        "postId": 2,
+        "userId": 1,
+        "id": 4,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-4-1",
+        "text": "amazing"
+      },
+      {
+        "postId": 2,
+        "userId": 1,
+        "id": 5,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-5-1",
+        "text": "insane"
+      }
     ]
   },
   {
+    "userId": 1,
     "id": 3,
     "title": "A wonderful day, isn't it?",
     "time": "2022-1-1",
@@ -58,14 +131,50 @@
     ],
     "likeCount": 100,
     "comments": [
-      "good",
-      "perfect",
-      "awesome",
-      "amazing",
-      "insane"
+      {
+        "postId": 3,
+        "userId": 1,
+        "id": 1,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-1-1",
+        "text": "good"
+      },
+      {
+        "postId": 3,
+        "userId": 1,
+        "id": 2,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-2-1",
+        "text": "perfect"
+      },
+      {
+        "postId": 3,
+        "userId": 1,
+        "id": 3,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-3-1",
+        "text": "awesome"
+      },
+      {
+        "postId": 3,
+        "userId": 1,
+        "id": 4,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-4-1",
+        "text": "amazing"
+      },
+      {
+        "postId": 3,
+        "userId": 1,
+        "id": 5,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-5-1",
+        "text": "insane"
+      }
     ]
   },
   {
+    "userId": 1,
     "id": 4,
     "title": "A wonderful day, isn't it?",
     "time": "2022-1-1",
@@ -80,14 +189,50 @@
     ],
     "likeCount": 99,
     "comments": [
-      "good",
-      "perfect",
-      "awesome",
-      "amazing",
-      "insane"
+      {
+        "postId": 4,
+        "userId": 1,
+        "id": 1,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-1-1",
+        "text": "good"
+      },
+      {
+        "postId": 4,
+        "userId": 1,
+        "id": 2,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-2-1",
+        "text": "perfect"
+      },
+      {
+        "postId": 4,
+        "userId": 1,
+        "id": 3,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-3-1",
+        "text": "awesome"
+      },
+      {
+        "postId": 4,
+        "userId": 1,
+        "id": 4,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-4-1",
+        "text": "amazing"
+      },
+      {
+        "postId": 4,
+        "userId": 1,
+        "id": 5,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-5-1",
+        "text": "insane"
+      }
     ]
   },
   {
+    "userId": 1,
     "id": 5,
     "title": "A wonderful day, isn't it?",
     "time": "2022-1-1",
@@ -102,11 +247,46 @@
       "https://cdn.pixabay.com/photo/2018/04/26/12/14/travel-3351825_1280.jpg"
     ],
     "comments": [
-      "good",
-      "perfect",
-      "awesome",
-      "amazing",
-      "insane"
+      {
+        "postId": 5,
+        "userId": 1,
+        "id": 1,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-1-1",
+        "text": "good"
+      },
+      {
+        "postId": 5,
+        "userId": 1,
+        "id": 2,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-2-1",
+        "text": "perfect"
+      },
+      {
+        "postId": 5,
+        "userId": 1,
+        "id": 3,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-3-1",
+        "text": "awesome"
+      },
+      {
+        "postId": 5,
+        "userId": 1,
+        "id": 4,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-4-1",
+        "text": "amazing"
+      },
+      {
+        "postId": 5,
+        "userId": 1,
+        "id": 5,
+        "avatarSrc": "https://github.com/paperdev.png",
+        "time": "2022-5-1",
+        "text": "insane"
+      }
     ]
   }
 ]
