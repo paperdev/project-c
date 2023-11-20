@@ -1,11 +1,12 @@
 'use client';
 
-import ComponentPostImage from '@/components/(post)/postImage';
 import React from 'react';
-import { Card, CardHeader, CardBody, CardFooter, Divider, Link } from '@nextui-org/react';
-import { LuShare2, LuBookmark } from 'react-icons/lu';
+import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Chip } from '@nextui-org/react';
+import { LuHeart, LuMessageSquare, LuEye, LuBookmark, LuYoutube } from 'react-icons/lu';
+import ComponentThumbnail from '@/components/(youtube)/thumbnail';
 
 const URL_CHANNEL = 'https://www.youtube.com/channel/'
+const URL_VIDEO = 'https://www.youtube.com/watch?v='
 
 export default function ComponentVideo({
   dataVideo
@@ -15,12 +16,12 @@ export default function ComponentVideo({
   const iconWeight = 'w-7';
   const iconHeight = 'h-7';
 
-  const onClickShare = async (event: React.MouseEvent) => {
+  const onClickYoutube = async (event: React.MouseEvent) => {
     if (!event.currentTarget) {
       return;
     }
 
-    // const channelId = event.currentTarget.getAttribute('data-channelid');
+    // const videoId = event.currentTarget.getAttribute('data-vidoeid');
   }
 
   return (
@@ -34,24 +35,60 @@ export default function ComponentVideo({
                   <div className='text-2xl font-bold text-primary-500'>{video.snippet.title}</div>
                   <span className='text-xs ml-2 text-default-500'>{video.snippet.publishedAt}</span>
                   <div className='flex mt-2 gap-1'>
-                    {video.snippet.description}
+                    {
+                      video.snippet.tags.map((tag: string, index: number) => {
+                        return <Chip key={index} color='secondary' variant='flat' radius='sm' className='cursor-pointer'>{`#${tag}`}</Chip>
+                      })
+                    }
                   </div>
+                  <div className='flex mt-2 gap-1'>
+                    <div className='text-primary-500'>Channel : </div>
+                    <Link isExternal showAnchorIcon href={URL_CHANNEL + video.snippet.channelId}>
+                      {video.snippet.channelTitle}
+                    </Link>
+                  </div>
+
                 </div>
               </CardHeader>
 
               <CardBody>
-                <ComponentPostImage imgUrls={[video.snippet.thumbnails.high.url]}></ComponentPostImage>
+                <ComponentThumbnail dataThumbnail={video.snippet.thumbnails.standard} videoId={video.id}></ComponentThumbnail>
               </CardBody>
 
               <CardFooter className="grid">
-                <div className='flex justify-start'>
-                  <div className='flex space-x-4'>
-                    <LuBookmark className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`}></LuBookmark>
-                    <Link isExternal href={URL_CHANNEL + video.snippet.channelId}>
-                      <LuShare2 data-channelid={video.snippet.channelId} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`} onClick={(event: React.MouseEvent) => { onClickShare(event); }}></LuShare2>
+                <div className='flex justify-between'>
+
+                  <div className='flex gap-4 ml-2'>
+                    <div className='flex gap-2 items-center text-gray-600'>
+                      <LuHeart className={`${iconHeight} ${iconWeight} cursor-pointer`}></LuHeart>
+                      <div>{video.statistics.likeCount}</div>
+                    </div>
+
+                    <div className='flex gap-2 items-center text-gray-600'>
+                      <LuEye className={`${iconHeight} ${iconWeight} cursor-pointer`}></LuEye>
+                      <div>{video.statistics.viewCount}</div>
+                    </div>
+
+                    <div className='flex gap-2 items-center text-gray-600'>
+                      <LuMessageSquare className={`${iconHeight} ${iconWeight} cursor-pointer`}></LuMessageSquare>
+                      <div>{video.statistics.commentCount}</div>
+                    </div>
+
+                    <div className='flex gap-2 items-center text-gray-600'>
+                      <LuBookmark className={`${iconHeight} ${iconWeight} cursor-pointer`}></LuBookmark>
+                      <div>{video.statistics.favoriteCount}</div>
+                    </div>
+                  </div>
+
+                  <div className='mr-2'>
+                    <Link isExternal href={URL_VIDEO + video.id}>
+                      <LuYoutube data-vidoeid={video.id} className={`${iconHeight} ${iconWeight} text-gray-600 cursor-pointer`} onClick={(event: React.MouseEvent) => { onClickYoutube(event); }}></LuYoutube>
                     </Link>
                   </div>
+
                 </div>
+
+
               </CardFooter>
 
               <Divider className="my-2" />

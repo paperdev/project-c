@@ -1,6 +1,6 @@
 import ComponentVideo from '@/components/(youtube)/video';
 
-const URL_YOUTUBE = 'https://youtube.googleapis.com/youtube/v3/playlists?part=snippet%2CcontentDetails&channelId=UC_x5XG1OV2P6uZZ5FSM9Ttw&maxResults=25&key=';
+const URL_YOUTUBE = 'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=KR&key=';
 
 async function getYoutubeList() {
   const res = await fetch(
