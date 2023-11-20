@@ -1,15 +1,18 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Input, Button, Avatar } from '@nextui-org/react';
+import { Input, Button, Avatar, Popover, PopoverTrigger, PopoverContent } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
+import ProfileAvatar from '@/components/(profile)/profileAvatar';
+import { iComment } from '@/shared/interface/post';
+import dataProfile from '@/shared/data/json/profile.json'; // TODO:
 
 export default function ComponentComment({
   postId,
   dataComments
 }: {
   postId: number,
-  dataComments: string[],
+  dataComments: iComment[],
 }) {
   const iconWeight = 'w-6';
   const iconHeight = 'h-6';
@@ -22,7 +25,16 @@ export default function ComponentComment({
     setRecentComments(dataComments);
   }, [dataComments]);
 
-  const sendComment = async (comment: string) => {
+  const sendComment = async (commentText: string) => {
+    const comment: iComment = {
+      postId: postId,
+      userId: 1,
+      id: recentComments.length,
+      avatarSrc: dataProfile.profile.avatar,
+      time: Date.now().toString(),
+      text: commentText
+    };
+
     await fetch(process.env.POST_URL + '/' + postId,
       {
         method: 'PUT',
@@ -92,14 +104,27 @@ export default function ComponentComment({
             return (
               <li key={index} className={`${(index !== recentComments.length - 1) ? 'mb-3' : ''} ml-6`}>
                 <div className={`absolute flex items-center justify-center ${iconHeight} ${iconWeight} -left-3 mt-4`}>
-                  <Avatar showFallback src='' className={`${iconHeight} ${iconWeight} cursor-pointer`}></Avatar>
+
+                  <Popover showArrow placement='top-start'>
+                    <PopoverTrigger>
+                      <Avatar
+                        showFallback
+                        src={comment.avatarSrc}
+                        className={`${iconHeight} ${iconWeight} cursor-pointer`}
+                      >
+                      </Avatar>
+                    </PopoverTrigger>
+                    <PopoverContent className='p-1'>
+                      <ProfileAvatar isGuest={false} dataProfile={dataProfile.profile}/>
+                    </PopoverContent>
+                  </Popover>
                 </div>
 
                 <Input
                   type='text'
                   isDisabled
                   variant='underlined'
-                  value={comment}
+                  value={comment.text}
                   endContent={
                     <time className='whitespace-nowrap text-default-400 text-small'>{`${index + 1} hours ago`}</time>
                   }
