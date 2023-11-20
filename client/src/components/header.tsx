@@ -74,7 +74,7 @@ export default function Header({
             className='sm:hidden'
           />
           <NavbarBrand>
-            <p className='font-bold text-inherit'>{title}</p>
+            <div className='font-bold text-inherit'>{title}</div>
           </NavbarBrand>
         </NavbarContent>
 

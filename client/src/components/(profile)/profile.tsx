@@ -34,34 +34,36 @@ export default async function ComponentProfile({
   dataProfile: iProfile
 }) {
   return (
-    <div className='flex flex-col justify-center items-center text-center sm:flex sm:flex-row sm:justify-center sm:items-center sm:text-left sm:py-4 mx-auto rounded-xl shadow-md'>
-      <Avatar src={dataProfile.avatar} className='w-24 h-24'></Avatar>
+    <>
+      <div className='flex flex-col justify-center items-center text-center sm:flex sm:flex-row sm:justify-center sm:items-center sm:text-left sm:py-4 mx-auto'>
+        <Avatar src={dataProfile.avatar} className='w-24 h-24'></Avatar>
 
-      <div className='sm:pl-4'>
-        <div className='py-2'>
-          <div className='text-primary text-lg font-semibold'>
-            {dataProfile.name}
+        <div className='sm:pl-4'>
+          <div className='py-2'>
+            <div className='text-primary text-lg font-semibold'>
+              {dataProfile.name}
+            </div>
+
+            <div className='font-medium'>
+              {dataProfile.jobTitle}
+            </div>
+
+            <div className='flex gap-2 mt-2 justify-center sm:justify-start'>
+              <Link href={dataProfile.github} target='_blank'>
+                <LuGithub className='w-6 h-6'></LuGithub>
+              </Link>
+              <Link href={dataProfile.linkedin} target='_blank'>
+                <LuLinkedin className='w-6 h-6'></LuLinkedin>
+              </Link>
+              <button data-tip='click to copy' onClick={() => { copyText(dataProfile.email) }}>
+                <LuMail className='w-6 h-6'></LuMail>
+              </button>
+            </div>
+
+            <ToastContainer />
           </div>
-
-          <div className='font-medium'>
-            {dataProfile.jobTitle}
-          </div>
-
-          <div className='flex gap-2 mt-2 justify-center sm:justify-start'>
-            <Link href={dataProfile.github} target='_blank'>
-              <LuGithub className='w-6 h-6'></LuGithub>
-            </Link>
-            <Link href={dataProfile.linkedin} target='_blank'>
-              <LuLinkedin className='w-6 h-6'></LuLinkedin>
-            </Link>
-            <button data-tip='click to copy' onClick={() => { copyText(dataProfile.email) }}>
-              <LuMail className='w-6 h-6'></LuMail>
-            </button>
-          </div>
-
-          <ToastContainer />
         </div>
       </div>
-    </div>
+    </>
   )
 }

@@ -10,12 +10,14 @@ export default function ComponentTag({
   dataTags: iTag[],
 }) {
   return (
-    <div className='flex justify-center items-center flex-wrap py-2 mx-auto rounded-xl shadow-md'>
-      {
-        dataTags.map((tag: iTag, index) => {
-          return <Chip key={index} color='secondary' variant='light'>{`#${tag.name}`}</Chip>
-        })
-      }
-    </div>
+    <>
+      <div className='flex justify-center items-center flex-wrap mx-auto'>
+        {
+          dataTags.map((tag: iTag, index) => {
+            return <Chip key={index} color='secondary' variant='light'>{`#${tag.name}`}</Chip>
+          })
+        }
+      </div>
+    </>
   )
 }

@@ -7,7 +7,7 @@ import ComponentPostInput from '@/components/(post)/postInput';
 import ComponentPostImage from '@/components/(post)/postImage';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, CardHeader, CardBody, CardFooter, Chip } from '@nextui-org/react';
+import { Card, CardHeader, CardBody, CardFooter, Chip, Divider } from '@nextui-org/react';
 
 export default function ComponentPost({
   dataPost
@@ -126,8 +126,11 @@ export default function ComponentPost({
                 </div>
               </CardFooter>
 
-            </Card>
+              {
+                index !== (dataPost.length - 1) && <Divider className="my-2" />
+              }
 
+            </Card>
           )
         })
       }

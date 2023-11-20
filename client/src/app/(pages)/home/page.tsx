@@ -1,8 +1,4 @@
-import ComponentProfile from '@/components/(profile)/profile';
-import ComponentTag from '@/components/(profile)/tag';
-import ComponentSummary from '@/components/(profile)/summary';
-import ComponentHistory from '@/components/(profile)/history';
-
+import ComponentProfileAll from '@/components/(profile)/profileAll';
 import { iProfileAll } from '@/shared/interface/profile';
 
 async function getPofileAll() {
@@ -27,10 +23,7 @@ export default async function Page() {
 
   return (
     <>
-      <ComponentProfile dataProfile={profileAll.profile} />
-      <ComponentTag dataTags={profileAll.tags} />
-      <ComponentSummary dataSummary={profileAll.summary} />
-      <ComponentHistory dataHistory={profileAll.history} />
+      <ComponentProfileAll dataProfileAll={profileAll} />
     </>
   )
 }
