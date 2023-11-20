@@ -9,6 +9,9 @@ interface iProfile {
   github: string;
   linkedin: string;
   email: string;
+  following: number;
+  followers: number;
+  isOnline: boolean;
 };
 
 type tProfileAll = iProfile | iTag[] | iSummary | iHistory[];

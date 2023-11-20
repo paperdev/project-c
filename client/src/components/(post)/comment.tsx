@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Input, Button, Avatar, Popover, PopoverTrigger, PopoverContent } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
-import { CommentAvatar } from './commentAvatar';
+import ProfileAvatar from '@/components/(profile)/profileAvatar';
 import { iComment } from '@/shared/interface/post';
 import dataProfile from '@/shared/data/json/profile.json'; // TODO:
 
@@ -115,7 +115,7 @@ export default function ComponentComment({
                       </Avatar>
                     </PopoverTrigger>
                     <PopoverContent className='p-1'>
-                      <CommentAvatar dataComment={comment}/>
+                      <ProfileAvatar dataProfile={dataProfile.profile}/>
                     </PopoverContent>
                   </Popover>
                 </div>

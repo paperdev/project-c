@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, User, Link } from '@nextui-org/react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import SubHeader from '@/components/subHeader';
 import dataProfile from '@/shared/data/json/profile.json';
 import { ThemeSwitcher } from './ThemeSwitcher';
@@ -23,6 +23,8 @@ const profileMenuItems = [
   'Help',
   'Log Out',
 ];
+
+const URL_PROFILE = '/home';
 
 function PageMenu({
     pageMenuItems,
@@ -57,6 +59,11 @@ export default function Header({
   title: string
 }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const router = useRouter();
+
+  const onClickProfile = () => {
+    router.push(URL_PROFILE);
+  }
 
   return (
     <>
@@ -102,6 +109,7 @@ export default function Header({
                               src: dataProfile.profile.avatar,
                               size: 'sm',
                             }}
+                            onClick={onClickProfile}
                           />
                         </> 
                       : 

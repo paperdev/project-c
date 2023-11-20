@@ -46,6 +46,7 @@ const nextConfig = {
     PROFILE_URL : profileUrl,
     PROFILE_URL_HISTORY : historyUrl,
     POST_URL : postUrl,
+    YOUTUBE_KEY: process.env.YOUTUBE_KEY,
   },
 
   // output: 'export'
