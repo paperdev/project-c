@@ -115,7 +115,7 @@ export default function ComponentComment({
                       </Avatar>
                     </PopoverTrigger>
                     <PopoverContent className='p-1'>
-                      <ProfileAvatar dataProfile={dataProfile.profile}/>
+                      <ProfileAvatar isGuest={false} dataProfile={dataProfile.profile}/>
                     </PopoverContent>
                   </Popover>
                 </div>

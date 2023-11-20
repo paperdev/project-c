@@ -1,6 +1,5 @@
 'use client';
 
-
 import React from 'react';
 import { Input, Avatar, Popover, PopoverTrigger, PopoverContent } from '@nextui-org/react';
 import { iChatData } from '@/shared/interface/chat';
