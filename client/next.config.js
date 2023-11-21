@@ -50,7 +50,7 @@ const nextConfig = {
   },
 
   distDir: 'build',
-  trailingSlash: true,
+  // trailingSlash: true,
   output: 'export',
 }
  
