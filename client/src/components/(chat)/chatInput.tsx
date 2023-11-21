@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Input, Button } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 
@@ -13,7 +13,6 @@ const ScoollHevavior: Record<string, ScrollBehavior> = {
 }
 
 export default function ComponentChatInput() {
-  const [inputValue, setInputValue] = useState('');
   const inputChatRef = useRef(null);
   const router = useRouter();
 

@@ -1,38 +1,34 @@
 'use client';
 
-import React from 'react';
-import { Avatar } from '@nextui-org/react';
-import Link from 'next/link';
+import React, { useState } from 'react';
+import { Avatar, Link, Button, Popover, PopoverTrigger, PopoverContent } from '@nextui-org/react';
 import { toast, ToastContainer } from 'react-toastify';
 import { LuGithub, LuMail, LuLinkedin } from 'react-icons/lu';
 import { iProfile } from '@/shared/interface/profile';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-let isToast = false;
-const delayTime = 2000;
-const copyText = async (text: string) => {
-  navigator.clipboard.writeText(text);
-  if (isToast) {
-    return;
-  }
-  const toastId = toast.success(
-    'Email is copied',
-    {
-      autoClose: delayTime,
-    }
-  );
-  isToast = true;
-  setTimeout(() => {
-    isToast = false;
-  }, delayTime)
-}
-
-export default async function ComponentProfile({
+export default function ComponentProfile({
   dataProfile
 }: {
   dataProfile: iProfile
 }) {
+  const delayTime = 2000;
+  const [isOpen, setIsOpen] = useState(false);
+
+  const copyText = (text: string) => {
+    navigator.clipboard.writeText(text);
+  
+    if (isOpen) {
+      return;
+    }
+
+    setIsOpen(true);
+
+    setTimeout(() => {
+      setIsOpen(false);
+    }, delayTime)
+  }
+
   return (
     <>
       <div className='flex flex-col justify-center items-center text-center sm:flex sm:flex-row sm:justify-center sm:items-center sm:text-left sm:py-4 mx-auto'>
@@ -40,24 +36,51 @@ export default async function ComponentProfile({
 
         <div className='sm:pl-4'>
           <div className='py-2'>
-            <div className='text-primary text-lg font-semibold'>
+            <div className='text-primary-500 text-lg font-semibold'>
               {dataProfile.name}
             </div>
 
-            <div className='font-medium'>
+            <div className='font-medium text-default-500'>
               {dataProfile.jobTitle}
             </div>
 
             <div className='flex gap-2 mt-2 justify-center sm:justify-start'>
-              <Link href={dataProfile.github} target='_blank'>
-                <LuGithub className='w-6 h-6'></LuGithub>
+              <Link
+                showAnchorIcon
+                href={dataProfile.github}
+                isExternal
+                color='secondary'
+                anchorIcon={
+                  <LuGithub className='w-6 h-6' />
+                }
+              >
               </Link>
-              <Link href={dataProfile.linkedin} target='_blank'>
-                <LuLinkedin className='w-6 h-6'></LuLinkedin>
+
+              <Link
+                showAnchorIcon
+                href={dataProfile.linkedin}
+                isExternal
+                color='secondary'
+                anchorIcon={
+                  <LuLinkedin className='w-6 h-6' />
+                }
+              >
               </Link>
-              <button data-tip='click to copy' onClick={() => { copyText(dataProfile.email) }}>
-                <LuMail className='w-6 h-6'></LuMail>
-              </button>
+
+              <Popover placement='right' color='success' showArrow={true} isOpen={isOpen} >
+                <PopoverTrigger>
+                  <div className='cursor-pointer text-secondary' onClick={() => { copyText(dataProfile.email) }}>
+                    <LuMail className='w-6 h-6' />
+                  </div>
+                  
+                </PopoverTrigger>
+                <PopoverContent>
+                  {
+                    isOpen && 
+                      <div className='p-1 text-secondary-500 text-md'>Email is copied!</div>
+                  }
+                </PopoverContent>
+              </Popover>
             </div>
 
             <ToastContainer />

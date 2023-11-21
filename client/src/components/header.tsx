@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, NavbarBrand, NavbarContent, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, User, Link } from '@nextui-org/react';
 import { usePathname, useRouter } from 'next/navigation';
 import SubHeader from '@/components/subHeader';
@@ -27,10 +27,10 @@ const profileMenuItems = [
 const URL_PROFILE = '/home';
 
 function PageMenu({
-    pageMenuItems,
-  }: {
-    pageMenuItems: string[]
-  }) {
+  pageMenuItems,
+}: {
+  pageMenuItems: string[],
+}) {
   const currentUrl = usePathname();
   const currentMenuName = currentUrl.charAt(1).toLocaleUpperCase() + currentUrl.slice(2);
 
@@ -58,7 +58,7 @@ export default function Header({
 }: {
   title: string
 }) {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
 
   const onClickProfile = () => {
@@ -79,11 +79,11 @@ export default function Header({
         </NavbarContent>
 
         <NavbarContent className='hidden sm:flex gap-4' justify='center'>
-          <PageMenu pageMenuItems={pageMenuItems}/>
+          <PageMenu pageMenuItems={pageMenuItems} />
         </NavbarContent>
 
         <NavbarContent as='div' justify='end'>
-          <ThemeSwitcher/>
+          <ThemeSwitcher />
           <Dropdown placement='bottom-end'>
             <DropdownTrigger>
               <Avatar
@@ -97,25 +97,25 @@ export default function Header({
             </DropdownTrigger>
             <DropdownMenu aria-label='Profile' variant='flat'>
               {profileMenuItems.map((item, index) => (
-                <DropdownItem key={`${item}-${index}`}>
+                <DropdownItem key={`${item}-${index}`} textValue={item}>
                   {
-                    0 === index 
-                      ? 
-                        <>
-                          <User
-                            name={dataProfile.profile.name}
-                            description={dataProfile.profile.email}
-                            avatarProps={{
-                              src: dataProfile.profile.avatar,
-                              size: 'sm',
-                            }}
-                            onClick={onClickProfile}
-                          />
-                        </> 
-                      : 
-                        <>
-                          <div className={index === profileMenuItems.length - 1 ? 'text-danger-500' : 'text-foreground-500'}>{item}</div>
-                        </>
+                    0 === index
+                      ?
+                      <>
+                        <User
+                          name={dataProfile.profile.name}
+                          description={dataProfile.profile.email}
+                          avatarProps={{
+                            src: dataProfile.profile.avatar,
+                            size: 'sm',
+                          }}
+                          onClick={onClickProfile}
+                        />
+                      </>
+                      :
+                      <>
+                        <div className={index === profileMenuItems.length - 1 ? 'text-danger-500' : 'text-foreground-500'}>{item}</div>
+                      </>
                   }
                 </DropdownItem>
               ))}
@@ -124,7 +124,7 @@ export default function Header({
         </NavbarContent>
 
         <NavbarMenu>
-          <PageMenu pageMenuItems={pageMenuItems}/>
+          <PageMenu pageMenuItems={pageMenuItems} />
         </NavbarMenu>
       </Navbar>
     </>

@@ -2,6 +2,7 @@ import Header from '@/components/header';
 import Body from '@/components/body';
 import Footer from '@/components/footer';
 
+const PageTitle = 'Welcome';
 export default function TemplateHome({
   children,
 }: {
@@ -10,7 +11,7 @@ export default function TemplateHome({
   return (
     <>
       <div className='paper-default-view'>
-        <Header title='Paper Gtihub' />
+        <Header title={PageTitle} />
         <Body>
           {children}
         </Body>

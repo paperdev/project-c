@@ -11,8 +11,8 @@ export default function ComponentHistory({
 }) {
   return (
     <>
-      <div className='py-2 px-8 mx-auto space-y-2 sm:py-2 sm:flex sm:items-center sm:space-y-0 sm:space-x-6'>
-        <div className='tracking-wide text-primary-500 font-semibold'>
+      <div className='paper-profile-layout'>
+        <div className='paper-profile-layout-title'>
           History
         </div>
         <div>
@@ -27,10 +27,14 @@ export default function ComponentHistory({
                     <div className='font-semibold text-primary-300'>{history.companyName}</div>
                     <div className='mt-1 ml-2 text-warning-500 text-sm'>{`${history.beginYear}-${history.beginMonth}`} ~ {`${history.endYear}-${history.endMonth}`}</div>
                   </div>
-                  <div className='mt-2 ml-2 text-default-500 whitespace-pre-wrap'>
+                  <div className='paper-profile-layout-contents'>
                     {
                       history.description.map((description, index) => {
-                        return <>• {description}<br /></>;
+                        return (
+                          <div key={index}>
+                            • {description}<br />
+                          </div>
+                        )
                       })
                     }
                   </div>

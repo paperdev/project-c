@@ -7,11 +7,11 @@ export default function ComponentSummary({
 }) {
   return (
     <>
-      <div className='py-2 px-8 mx-auto space-y-2 sm:py-2 sm:flex sm:items-center sm:space-y-0 sm:space-x-6'>
-        <div className='tracking-wide text-primary-500 font-semibold'>
+      <div className='paper-profile-layout'>
+        <div className='paper-profile-layout-title'>
           Summary
         </div>
-        <div className='mt-2 ml-2 text-default-500 whitespace-pre-wrap'>
+        <div className='paper-profile-layout-contents'>
           {dataSummary.contents}
         </div>
       </div>

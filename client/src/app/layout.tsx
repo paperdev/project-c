@@ -4,14 +4,13 @@ import TemplateHome from '@/components/template/home';
 import { Providers } from "./providers";
 import { Analytics } from '@vercel/analytics/react';
 
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning={true}>
       <body>
         <Providers>
           <TemplateHome>
