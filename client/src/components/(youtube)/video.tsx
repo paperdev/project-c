@@ -34,8 +34,9 @@ export default function ComponentVideo({
                 <div>
                   <div className='text-2xl font-bold text-primary-500'>{video.snippet.title}</div>
                   <span className='text-xs ml-2 text-default-500'>{video.snippet.publishedAt}</span>
-                  <div className='flex mt-2 gap-1'>
+                  <div className='flex mt-2 gap-1 flex-wrap mx-auto'>
                     {
+                      video.snippet.tags && 
                       video.snippet.tags.map((tag: string, index: number) => {
                         return <Chip key={index} color='secondary' variant='flat' radius='sm' className='cursor-pointer'>{`#${tag}`}</Chip>
                       })
