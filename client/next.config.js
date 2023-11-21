@@ -49,7 +49,9 @@ const nextConfig = {
     YOUTUBE_KEY: process.env.YOUTUBE_KEY,
   },
 
-  // output: 'export'
+  distDir: 'build',
+  trailingSlash: true,
+  output: 'export',
 }
  
 module.exports = nextConfig;

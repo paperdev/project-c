@@ -22,15 +22,20 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/shared/*": ["../shared/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@/shared/*": [
+        "../shared/*"
+      ]
     }
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
+    "build/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
   ],
   "exclude": [
     "node_modules"
